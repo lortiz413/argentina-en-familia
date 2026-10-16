@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Plan de viaje familiar de 15 días por Buenos Aires, Iguazú, Bariloche y Mendoza, noviembre 2027.">
+<meta property="og:title" content="Argentina en Familia 2027">
+<meta property="og:description" content="Itinerario día a día, hoteles, dónde comer y calculadora de costos.">
+<meta property="og:image" content="fotos/hero.jpg">
+<style>:root{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Argentina en Familia 2027</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+/* Layout: un diario de viaje editorial. Hero fotográfico, secciones anchas con una columna de lectura de ~68ch, tarjetas por día con bandas por región y una calculadora de costos al final. */
+:root{
+  --bg:#F3F6F9; --surface:#FFFFFF; --surface2:#E9EFF5; --ink:#0F2238; --muted:#546576; --line:#D3DDE7;
+  --celeste:#4D93CF; --celeste-soft:#DCEBF8; --sol:#D9A416; --sol-soft:#FBF0CC; --selva:#2E8B5B; --selva-soft:#DCF1E4; --lago:#3E7CB1; --andes:#A9552E; --andes-soft:#F6E3D7;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,Helvetica,Arial,sans-serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+  --shadow:0 10px 30px rgba(15,34,56,.10);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0B1522; --surface:#132235; --surface2:#1B2D44; --ink:#EAF1F8; --muted:#A3B4C6; --line:#263B52;
+  --celeste:#7FB8EA; --celeste-soft:#1A3550; --sol:#F0C24B; --sol-soft:#3A3014; --selva:#5CC38A; --selva-soft:#153A28; --lago:#7FB2DE; --andes:#E08A5E; --andes-soft:#3F2416;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0B1522; --surface:#132235; --surface2:#1B2D44; --ink:#EAF1F8; --muted:#A3B4C6; --line:#263B52;
+  --celeste:#7FB8EA; --celeste-soft:#1A3550; --sol:#F0C24B; --sol-soft:#3A3014; --selva:#5CC38A; --selva-soft:#153A28; --lago:#7FB2DE; --andes:#E08A5E; --andes-soft:#3F2416;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.08;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.25rem;font-weight:700}
+p{margin:0}
+a{color:var(--lago)}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--display);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.lede{font-size:1.15rem;max-width:68ch;color:var(--muted)}
+section{padding-block:56px}
+.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;max-width:68ch}
+.num{font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:14px;padding-block:10px;overflow-x:auto;scrollbar-width:none}
+.nav .wrap::-webkit-scrollbar{display:none}
+.brand{font-family:var(--display);font-weight:800;white-space:nowrap;letter-spacing:-.01em}
+.brand span{color:var(--celeste)}
+.nav a{font-family:var(--display);font-size:.85rem;font-weight:700;color:var(--muted);text-decoration:none;white-space:nowrap;padding:6px 10px;border-radius:999px}
+.nav a:hover,.nav a:focus-visible{background:var(--surface2);color:var(--ink);outline:none}
+
+/* hero */
+.hero{position:relative;min-height:520px;display:grid;align-items:end;overflow:hidden;background:#0F2238}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,34,56,.05) 20%,rgba(15,34,56,.85) 100%)}
+.hero .wrap{position:relative;z-index:1;padding-block:48px 40px;color:#fff;display:grid;gap:18px}
+.hero h1{font-size:clamp(2.4rem,7vw,5rem);font-weight:800;letter-spacing:-.02em;max-width:14ch}
+.hero p{max-width:60ch;font-size:1.15rem;color:#E6EEF7}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--display);font-size:.8rem;font-weight:700;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(4px)}
+.chip.sol{background:var(--sol);color:#1b1400;border-color:transparent}
+
+/* cards */
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;min-width:0}
+.card.rec{border-color:var(--sol);box-shadow:var(--shadow);position:relative}
+.tag{display:inline-block;font-family:var(--display);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:6px;background:var(--surface2);color:var(--muted)}
+.tag.sol{background:var(--sol-soft);color:#6b4f00}
+:root[data-theme="dark"] .tag.sol{color:var(--sol)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tag.sol{color:var(--sol)}}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.98rem}
+.kv dt{color:var(--muted);font-family:var(--display);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding-top:3px}
+.kv dd{margin:0}
+ul.clean{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+ul.clean li{padding-left:18px;position:relative}
+ul.clean li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--celeste)}
+
+/* season table */
+.season{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.season table{border-collapse:collapse;width:100%;min-width:640px;font-family:var(--display);font-size:.8rem}
+.season th,.season td{padding:9px 8px;text-align:center;border-bottom:1px solid var(--line)}
+.season th:first-child,.season td:first-child{text-align:left;font-weight:700;padding-left:14px;white-space:nowrap}
+.season thead th{color:var(--muted);font-weight:700;letter-spacing:.06em}
+.season tbody tr:last-child td{border-bottom:none}
+.dot{display:inline-block;width:22px;height:22px;border-radius:6px}
+.d3{background:var(--selva)} .d2{background:var(--sol)} .d1{background:var(--line)}
+.season td.pick{background:var(--celeste-soft)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.9rem;color:var(--muted);margin-top:12px;align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+
+/* route */
+.route{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+.stop{padding:20px;border-right:1px solid var(--line);display:grid;gap:8px;position:relative;min-width:0}
+.stop:last-child{border-right:none}
+.stop .n{font-family:var(--display);font-size:2rem;font-weight:800;line-height:1}
+.stop .leg{font-size:.85rem;color:var(--muted);font-family:var(--display);font-weight:700}
+.stop.ba .n{color:var(--celeste)} .stop.ig .n{color:var(--selva)} .stop.br .n{color:var(--lago)} .stop.mz .n{color:var(--andes)}
+.stop img{height:120px;width:100%;object-fit:cover;border-radius:10px}
+@media (max-width:700px){.stop{border-right:none;border-bottom:1px solid var(--line)} .stop:last-child{border-bottom:none}}
+
+/* days */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tabs button{font-family:var(--display);font-weight:700;font-size:.85rem;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tabs button:focus-visible{outline:2px solid var(--celeste);outline-offset:2px}
+.days{display:grid;gap:18px}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);min-width:0}
+.day.has-img{grid-template-columns:minmax(0,1fr) 300px}
+@media (max-width:860px){.day.has-img{grid-template-columns:minmax(0,1fr)} .day.has-img .dimg{order:-1;height:200px}}
+.dimg{min-width:0}
+.dimg img{width:100%;height:100%;object-fit:cover;min-height:220px}
+.dbody{padding:22px;display:grid;gap:14px;border-left:6px solid var(--celeste);min-width:0}
+.day[data-r="ig"] .dbody{border-left-color:var(--selva)} .day[data-r="br"] .dbody{border-left-color:var(--lago)} .day[data-r="mz"] .dbody{border-left-color:var(--andes)} .day[data-r="vu"] .dbody{border-left-color:var(--sol)}
+.dhead{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline}
+.dhead .dnum{font-family:var(--display);font-weight:800;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dhead .ddate{font-family:var(--display);font-weight:700;color:var(--muted);font-size:.9rem}
+.dhead h3{width:100%;font-size:1.45rem}
+.slots{display:grid;gap:10px}
+.slot{display:grid;grid-template-columns:78px 1fr;gap:10px;align-items:start}
+.slot b{font-family:var(--display);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+.notes{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.note{border-radius:10px;padding:12px 14px;font-size:.95rem;background:var(--surface2)}
+.note.local{background:var(--sol-soft)} .note.learn{background:var(--celeste-soft)} .note.eat{background:var(--selva-soft)}
+.note b{font-family:var(--display);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:4px;color:var(--muted)}
+.dcost{font-family:var(--display);font-size:.85rem;color:var(--muted);font-weight:700}
+.dcost strong{color:var(--ink)}
+
+/* hotels */
+.tiers{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.hotel{display:grid;gap:10px}
+.hotel .price{font-family:var(--display);font-weight:800;font-size:1.5rem}
+.hotel .price small{font-size:.8rem;font-weight:700;color:var(--muted)}
+.hotel .pills{display:flex;gap:6px;flex-wrap:wrap}
+.pill{font-family:var(--display);font-size:.72rem;font-weight:700;padding:3px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+
+/* eat */
+.eat .card{display:grid;gap:12px}
+.eat .card img{height:150px;width:100%;object-fit:cover;border-radius:10px}
+.eat ul.clean li{font-size:.98rem}
+.eat em{color:var(--muted)}
+
+/* calc */
+.calc{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:22px}
+@media (max-width:820px){.calc{grid-template-columns:minmax(0,1fr)}}
+.ctrl{display:grid;gap:16px}
+.field{display:grid;gap:6px}
+.field label{font-family:var(--display);font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stepper{display:flex;align-items:center;gap:8px}
+.stepper button{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);font-family:var(--display);font-size:1.2rem;font-weight:800;cursor:pointer}
+.stepper button:focus-visible{outline:2px solid var(--celeste)}
+.stepper output{font-family:var(--display);font-weight:800;font-size:1.3rem;min-width:2ch;text-align:center}
+.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{flex:1;padding:10px 6px;border:none;background:var(--surface);color:var(--ink);font-family:var(--display);font-weight:700;font-size:.85rem;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.checks{display:grid;gap:8px}
+.checks label{display:flex;gap:10px;align-items:flex-start;font-size:.95rem;cursor:pointer}
+.checks input{margin-top:5px;accent-color:var(--celeste);width:18px;height:18px}
+.checks span.p{margin-left:auto;font-family:var(--display);font-weight:700;color:var(--muted);white-space:nowrap}
+.total{background:var(--ink);color:var(--bg);border-radius:16px;padding:22px;display:grid;gap:6px}
+.total .big{font-family:var(--display);font-size:clamp(2.2rem,6vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1}
+.total small{color:var(--line);font-family:var(--display);font-weight:700;font-size:.85rem}
+.lines{display:grid;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
+.line{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+.line:last-child{border-bottom:none}
+.line .sw{width:14px;height:14px;border-radius:4px}
+.line .lbl{font-family:var(--display);font-weight:700;font-size:.9rem}
+.line .sub{font-size:.85rem;color:var(--muted)}
+.line .amt{font-family:var(--display);font-weight:800;text-align:right}
+.bar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--surface2);margin:16px 0 6px}
+.bar i{display:block;height:100%}
+.ars{font-size:.9rem;color:var(--muted)}
+
+/* tips */
+.tip h3{display:flex;gap:10px;align-items:center}
+.tip ul.clean li{font-size:.98rem}
+
+footer{padding-block:36px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+footer .wrap{display:grid;gap:10px}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.card,.day{transition:transform .2s ease} .card:hover{transform:translateY(-2px)}}
+</style>
+</head>
+<body>
+
+
+
+<nav class="nav" aria-label="Secciones">
+  <div class="wrap">
+    <div class="brand">Argentina <span>en familia</span></div>
+    <a href="#fechas">Fechas</a><a href="#ruta">Ruta</a><a href="#dias">Día a día</a><a href="#hoteles">Hoteles</a><a href="#comer">Dónde comer</a><a href="#costos">Costos</a><a href="#tips">Antes de ir</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <img src="fotos/hero.jpg" alt="Arcoíris sobre las Cataratas del Iguazú" loading="eager" onerror="this.remove()">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#F2C94C">Plan de viaje · Noviembre 2027</span>
+    <h1>15 días por la Argentina que los locales quieren mostrarte</h1>
+    <p>Buenos Aires con los jacarandás en flor, la selva y las cataratas de Iguazú, los lagos de Bariloche en primavera y la cordillera desde Mendoza. Un itinerario día a día pensado para una familia que quiere aprender, comer bien y salir de la ruta turística de siempre.</p>
+    <div class="chips">
+      <span class="chip sol">Sábado 6 al sábado 20 de noviembre de 2027</span>
+      <span class="chip">4 regiones</span><span class="chip">14 noches</span><span class="chip">5 vuelos</span><span class="chip">Desde San Juan, PR</span>
+    </div>
+  </div>
+</header>
+
+<!-- FECHAS -->
+<section id="fechas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Cuándo ir</span>
+      <h2>Las fechas perfectas para 2027</h2>
+      <p class="lede">Argentina es enorme y cada región tiene su mejor momento. La ventana que mejor combina las cuatro paradas de esta ruta es la primavera austral, cuando Buenos Aires está en su punto, Iguazú todavía no llegó al calor extremo del verano y Bariloche ya se despertó del invierno con nieve en las cumbres y muy poca gente.</p>
+    </div>
+
+    <div class="grid g2" style="margin-bottom:28px">
+      <div class="card rec">
+        <span class="tag sol">Recomendada</span>
+        <h3 style="margin-top:12px">Opción A · 6 al 20 de noviembre de 2027</h3>
+        <p style="margin:10px 0 14px">Sábado a sábado. Es la semana en que los más de 18,000 jacarandás de Buenos Aires tiñen de violeta las avenidas, temporada baja en Bariloche (precios más bajos y senderos vacíos) y clima templado en Mendoza. Iguazú está cálido pero con los saltos llenos de agua.</p>
+        <dl class="kv">
+          <dt>Buenos Aires</dt><dd>17 a 25 °C, jacarandás en flor, parques llenos de vida</dd>
+          <dt>Iguazú</dt><dd>20 a 31 °C, húmedo, lluvias cortas; las cataratas con buen caudal</dd>
+          <dt>Bariloche</dt><dd>5 a 16 °C, cumbres nevadas, lagos azules, días de 15 horas de luz</dd>
+          <dt>Mendoza</dt><dd>15 a 28 °C, seco y soleado; la alta montaña ya abierta</dd>
+          <dt>Escuela</dt><dd>Sin feriados largos en PR; se pierden 10 días lectivos</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <span class="tag">Alternativa</span>
+        <h3 style="margin-top:12px">Opción B · 13 al 27 de marzo de 2027</h3>
+        <p style="margin:10px 0 14px">Otoño austral. Bariloche se pone rojo y dorado (los bosques de lenga y ñire), Mendoza acaba de terminar la Vendimia y Buenos Aires tiene su mejor clima del año. La contra: Iguazú está más caluroso (hasta 33 °C) y es temporada alta en Bariloche por Semana Santa (28 de marzo al 4 de abril de 2027), así que conviene cerrar hoteles antes.</p>
+        <dl class="kv">
+          <dt>Pro</dt><dd>Colores de otoño en la Patagonia, uvas recién cosechadas en Mendoza</dd>
+          <dt>Contra</dt><dd>Calor y humedad fuerte en Iguazú, precios más altos en el sur</dd>
+          <dt>Evitar</dt><dd>Enero y febrero (calor extremo en Iguazú y BA, temporada alta en todo el país) y julio (frío y vacaciones de invierno argentinas)</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="season" role="region" aria-label="Mejor mes por región">
+      <table>
+        <thead><tr><th>Región</th><th>Ene</th><th>Feb</th><th>Mar</th><th>Abr</th><th>May</th><th>Jun</th><th>Jul</th><th>Ago</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dic</th></tr></thead>
+        <tbody>
+          <tr><td>Buenos Aires</td><td><i class="dot d1"></i></td><td><i class="dot d1"></i></td><td><i class="dot d3"></i></td><td><i class="dot d3"></i></td><td><i class="dot d2"></i></td><td><i class="dot d1"></i></td><td><i class="dot d1"></i></td><td><i class="dot d2"></i></td><td><i class="dot d3"></i></td><td><i class="dot d3"></i></td><td class="pick"><i class="dot d3"></i></td><td><i class="dot d2"></i></td></tr>
+          <tr><td>Iguazú</td><td><i class="dot d1"></i></td><td><i class="dot d1"></i></td><td><i class="dot d2"></i></td><td><i class="dot d3"></i></td><td><i class="dot d3"></i></td><td><i class="dot d3"></i></td><td><i class="dot d3"></i></td><td><i class="dot d3"></i></td><td><i class="dot d3"></i></td><td><i class="dot d2"></i></td><td class="pick"><i class="dot d2"></i></td><td><i class="dot d1"></i></td></tr>
+          <tr><td>Bariloche (lagos)</td><td><i class="dot d3"></i></td><td><i class="dot d3"></i></td><td><i class="dot d3"></i></td><td><i class="dot d3"></i></td><td><i class="dot d2"></i></td><td><i class="dot d1"></i></td><td><i class="dot d1"></i></td><td><i class="dot d1"></i></td><td><i class="dot d2"></i></td><td><i class="dot d2"></i></td><td class="pick"><i class="dot d3"></i></td><td><i class="dot d3"></i></td></tr>
+          <tr><td>Mendoza (montaña)</td><td><i class="dot d3"></i></td><td><i class="dot d3"></i></td><td><i class="dot d3"></i></td><td><i class="dot d3"></i></td><td><i class="dot d2"></i></td><td><i class="dot d1"></i></td><td><i class="dot d1"></i></td><td><i class="dot d1"></i></td><td><i class="dot d2"></i></td><td><i class="dot d3"></i></td><td class="pick"><i class="dot d3"></i></td><td><i class="dot d3"></i></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend"><span><i class="dot d3"></i> Ideal</span><span><i class="dot d2"></i> Bueno</span><span><i class="dot d1"></i> Evitar</span><span>Columna celeste: la ventana elegida</span></div>
+  </div>
+</section>
+
+<!-- RUTA -->
+<section id="ruta" style="background:var(--surface2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">La ruta</span>
+      <h2>Cuatro mundos en un solo país</h2>
+      <p class="lede">La ruta va de norte a sur y después al oeste, usando los vuelos internos directos de Aerolíneas Argentinas que no pasan por Buenos Aires. Así se ahorran dos días enteros de traslados.</p>
+    </div>
+    <div class="route">
+      <div class="stop ba"><img src="fotos/ba1.jpg" alt="Pareja bailando tango" loading="lazy" onerror="this.remove()"><span class="n">01</span><h3>Buenos Aires</h3><p>5 noches · Ciudad, historia, tango y bodegones</p><span class="leg">✈ SJU → EZE (13 a 15 h con escala en Panamá o Bogotá)</span></div>
+      <div class="stop ig"><img src="fotos/ig2.jpg" alt="Cataratas del Iguazú" loading="lazy" onerror="this.remove()"><span class="n">02</span><h3>Iguazú</h3><p>2 noches · Selva, cataratas y fauna</p><span class="leg">✈ Aeroparque → Iguazú (1 h 50)</span></div>
+      <div class="stop br"><img src="fotos/br1.jpg" alt="Barco en el lago Nahuel Huapi, Bariloche" loading="lazy" onerror="this.remove()"><span class="n">03</span><h3>Bariloche</h3><p>4 noches · Lagos, cerros, chocolate</p><span class="leg">✈ Iguazú → Bariloche directo (3 h, martes y sábados) o vía Aeroparque</span></div>
+      <div class="stop mz"><img src="fotos/mz1.jpg" alt="Parque Provincial Aconcagua, Mendoza" loading="lazy" onerror="this.remove()"><span class="n">04</span><h3>Mendoza</h3><p>2 noches · Andes, Aconcagua y viñedos</p><span class="leg">✈ Bariloche → Mendoza (2 h) · Mendoza → Aeroparque → Ezeiza → SJU</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIA A DIA -->
+<section id="dias">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Itinerario</span>
+      <h2>Día a día, del 6 al 20 de noviembre</h2>
+      <p class="lede">Cada día tiene un bloque de mañana, tarde y noche, un dato para aprender en el camino, una recomendación local y una idea para comer. Los costos son aproximados en dólares para una familia de 4 y cubren solo entradas y actividades (hotel, comida y transporte van en la calculadora).</p>
+    </div>
+    <div class="tabs" role="group" aria-label="Filtrar por región">
+      <button aria-pressed="true" data-f="all">Todo el viaje</button>
+      <button aria-pressed="false" data-f="ba">Buenos Aires</button>
+      <button aria-pressed="false" data-f="ig">Iguazú</button>
+      <button aria-pressed="false" data-f="br">Bariloche</button>
+      <button aria-pressed="false" data-f="mz">Mendoza</button>
+    </div>
+    <div class="days" id="days"></div>
+  </div>
+</section>
+
+<!-- HOTELES -->
+<section id="hoteles" style="background:var(--surface2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Estadías</span>
+      <h2>Dónde dormir, en tres niveles</h2>
+      <p class="lede">Precios por noche para una habitación familiar o departamento para 4, con desayuno cuando el hotel lo incluye. Elegí el nivel y la calculadora de abajo se ajusta sola. En Argentina los hoteles cobran a extranjeros en dólares o al tipo de cambio oficial, y muchos no cobran IVA (21%) a turistas que pagan con tarjeta extranjera.</p>
+    </div>
+    <div class="tiers seg" role="group" aria-label="Nivel de hotel" id="tierSeg" style="max-width:520px">
+      <button data-t="eco" aria-pressed="false">Económico</button>
+      <button data-t="mid" aria-pressed="true">Cómodo</button>
+      <button data-t="lux" aria-pressed="false">Premium</button>
+    </div>
+    <div class="grid g4" id="hotels"></div>
+  </div>
+</section>
+
+<!-- COMER -->
+<section id="comer" class="eat">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Gastronomía</span>
+      <h2>Dónde comer como la gente de ahí</h2>
+      <p class="lede">Argentina se come tarde (almuerzo a la 1:30, cena a las 9 de la noche) y en familia. Los bodegones son restaurantes de barrio con porciones para compartir; una milanesa alcanza para dos. Precios aproximados por persona, con bebida.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <img src="fotos/ba2.jpg" alt="Empanadas argentinas" loading="lazy" onerror="this.remove()">
+        <h3>Buenos Aires</h3>
+        <ul class="clean">
+          <li><strong>El Preferido de Palermo</strong> (Borges 2108). Bodegón de 1952 que entró en la lista de los 50 mejores de Latinoamérica. Milanesa, tortilla babé, jamón cortado a cuchillo y helado de pistacho. <em>US$25 a 35</em></li>
+          <li><strong>Los Galgos</strong> (Callao 501). Bar notable restaurado; hora del vermú desde las 6 de la tarde con platitos. Los chicos piden tostados y limonada. <em>US$20 a 30</em></li>
+          <li><strong>El Obrero</strong> (Agustín Caffarena 64, La Boca). Cantina de 1954 con fotos de Boca en las paredes; puchero, pastas y pescado. Ir al mediodía. <em>US$18 a 25</em></li>
+          <li><strong>Pizzería Güerrín</strong> (Corrientes 1368). Pizza de molde a la porción, de parado en la barra como los porteños. Pedir fugazzeta y fainá. <em>US$8 a 12</em></li>
+          <li><strong>Don Julio</strong> (Guatemala 4691). La parrilla más famosa del mundo; reservar con 2 a 3 meses de anticipación o ir a <strong>La Carnicería</strong> (Thames 2317), más relajada. <em>US$60 a 90</em></li>
+          <li><strong>Chori</strong> (Thames 1653). Choripán gourmet en Palermo. <em>US$8</em>. Para el postre, helado en <strong>Rapanui</strong> (dulce de leche con brownie).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <img src="fotos/mate.jpg" alt="Mate, la bebida compartida de Argentina" loading="lazy" onerror="this.remove()">
+        <h3>Iguazú</h3>
+        <ul class="clean">
+          <li><strong>Aqva</strong> (Av. Córdoba y Carlos Thays, Puerto Iguazú). Pescados de río que no se comen en ningún otro lado: surubí a la parrilla, pacú con mandioca. <em>US$25 a 35</em></li>
+          <li><strong>La Rueda 1975</strong> (Av. Córdoba 28). Clásico del pueblo, parrilla y pasta, muy cómodo con niños. <em>US$20 a 30</em></li>
+          <li><strong>El Quincho del Tío Querido</strong> (Bompland 110). Asado con música en vivo y show folclórico; los chicos se divierten. <em>US$25 a 35</em></li>
+          <li><strong>La Feirinha</strong> (Av. Brasil). Mercadito al aire libre con chipa recién hecha, dulces de la zona y mate. Ir a media tarde. <em>US$5</em></li>
+          <li><strong>Dentro del parque:</strong> llevar agua y snacks; el restaurante Fortín es correcto pero caro. Cuidado con los coatíes: te roban la comida de la mano.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <img src="fotos/asado.jpg" alt="Asado argentino" loading="lazy" onerror="this.remove()">
+        <h3>Bariloche</h3>
+        <ul class="clean">
+          <li><strong>Curanto en Colonia Suiza</strong>. Solo miércoles y domingos en la feria: carne, pollo, chorizo y verduras cocinadas bajo tierra sobre piedras calientes, una tradición de los primeros colonos. <em>US$20</em></li>
+          <li><strong>El Boliche de Alberto</strong> (Villegas 347). La parrilla de toda la vida; el bife de chorizo alcanza para dos. Hay que hacer fila, vale la pena. <em>US$25 a 35</em></li>
+          <li><strong>Alto el Fuego</strong> (20 de Febrero 451). Parrilla más íntima y mejor carne de la ciudad. Reservar. <em>US$30 a 40</em></li>
+          <li><strong>Patagonia Brewery</strong> (Av. Bustillo km 24.7). Cervecería con la mejor vista del lago; papas con cheddar para los chicos, pinta para los padres. <em>US$20</em></li>
+          <li><strong>Mamuschka y Rapanui</strong> (calle Mitre). El chocolate de Bariloche es parte del viaje: chocolate en rama, submarino (leche caliente con barra de chocolate) y helado de frambuesa en <strong>Jauja</strong>. <em>US$5 a 10</em></li>
+        </ul>
+      </div>
+      <div class="card">
+        <img src="fotos/alfajores.jpg" alt="Alfajores argentinos" loading="lazy" onerror="this.remove()">
+        <h3>Mendoza</h3>
+        <ul class="clean">
+          <li><strong>Fuente y Fonda</strong> (Montevideo 675). Bodegón familiar con porciones para 2 o 3: milanesas, pastas y flan gigante. Perfecto para la primera noche. <em>US$18 a 25</em></li>
+          <li><strong>María Antonieta</strong> (Belgrano 1069). Desayuno y brunch de la ciudad; medialunas y jugo de uva. <em>US$10 a 15</em></li>
+          <li><strong>Almuerzo en bodega</strong>: Ruca Malen o Lagarde (Luján de Cuyo) tienen menú de pasos con vista a los Andes y menú infantil. Reservar. <em>US$60 adultos, US$25 niños</em></li>
+          <li><strong>La Marchigiana</strong> (Patricias Mendocinas 1550). Pastas italianas desde 1950, lo que comen las familias mendocinas los domingos. <em>US$20</em></li>
+          <li><strong>Helados Ferruccio Soppelsa</strong>. Cadena local desde 1927; probar el de vino Malbec (sin alcohol, para chicos también) y dulce de leche granizado. <em>US$4</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COSTOS -->
+<section id="costos" style="background:var(--surface2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Presupuesto</span>
+      <h2>Cuánto cuesta el viaje completo</h2>
+      <p class="lede">Ajustá cantidad de viajeros, nivel de hotel y actividades opcionales. Los montos son aproximados en dólares a octubre de 2026 y pueden variar con la inflación argentina y las tarifas aéreas; sirven para presupuestar con un margen del 10 al 15%.</p>
+    </div>
+    <div class="calc">
+      <div class="card ctrl">
+        <div class="field"><label for="adults">Adultos</label><div class="stepper"><button type="button" data-step="adults" data-d="-1" aria-label="Menos adultos">−</button><output id="adults">2</output><button type="button" data-step="adults" data-d="1" aria-label="Más adultos">+</button></div></div>
+        <div class="field"><label for="kids">Niños de 6 a 12 años</label><div class="stepper"><button type="button" data-step="kids" data-d="-1" aria-label="Menos niños">−</button><output id="kids">2</output><button type="button" data-step="kids" data-d="1" aria-label="Más niños">+</button></div><span class="ars">Menores de 6 no pagan entradas; en vuelos pagan tarifa infantil.</span></div>
+        <div class="field"><label>Nivel de hotel y comida</label><div class="seg" id="tierSeg2"><button data-t="eco" aria-pressed="false">Económico</button><button data-t="mid" aria-pressed="true">Cómodo</button><button data-t="lux" aria-pressed="false">Premium</button></div></div>
+        <div class="field"><label>Actividades opcionales</label>
+          <div class="checks" id="opts">
+            <label><input type="checkbox" id="o1" data-a="70" data-k="55" checked> <span>Gran Aventura en lancha bajo las cataratas</span><span class="p">70 / 55</span></label>
+            <label><input type="checkbox" id="o2" data-a="75" data-k="55" checked> <span>Isla Victoria y Bosque de Arrayanes (barco)</span><span class="p">75 / 55</span></label>
+            <label><input type="checkbox" id="o3" data-a="25" data-k="15"> <span>Tour del estadio La Bombonera</span><span class="p">25 / 15</span></label>
+            <label><input type="checkbox" id="o4" data-a="60" data-k="25" checked> <span>Almuerzo en bodega de Luján de Cuyo</span><span class="p">60 / 25</span></label>
+            <label><input type="checkbox" id="o5" data-a="90" data-k="60"> <span>Cena show de tango (El Querandí o Rojo Tango)</span><span class="p">90 / 60</span></label>
+            <label><input type="checkbox" id="o6" data-a="105" data-k="90"> <span>Lado brasileño de las cataratas (visa electrónica + entrada)</span><span class="p">105 / 90</span></label>
+          </div>
+          <span class="ars">Precio adulto / niño en US$.</span>
+        </div>
+      </div>
+      <div style="display:grid;gap:18px;min-width:0">
+        <div class="total">
+          <small id="totalLbl">Total estimado · 2 adultos y 2 niños · nivel cómodo</small>
+          <div class="big num" id="total">US$ 0</div>
+          <small id="perPerson">por persona</small>
+        </div>
+        <div>
+          <div class="bar" id="bar" aria-hidden="true"></div>
+          <div class="lines" id="lines"></div>
+          <p class="ars" style="margin-top:12px" id="arsNote"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section id="tips">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Antes de ir</span>
+      <h2>Lo que conviene saber</h2>
+    </div>
+    <div class="grid g3">
+      <div class="card tip"><h3>Documentos</h3><ul class="clean">
+        <li>Pasaporte de EE. UU. vigente al menos 6 meses. Argentina no pide visa ni tasa de reciprocidad a estadounidenses.</li>
+        <li>Brasil sí: desde abril de 2025 los ciudadanos de EE. UU. necesitan visa electrónica (unos US$80, válida 10 años). Solo hace falta si cruzan al lado brasileño de las cataratas.</li>
+        <li>Menores que viajan con ambos padres no necesitan permiso extra. Llevar certificados de nacimiento por si acaso.</li>
+        <li>Seguro de viaje con cobertura médica; en Bariloche y la alta montaña es importante.</li>
+      </ul></div>
+      <div class="card tip"><h3>Dinero</h3><ul class="clean">
+        <li>Pagar con tarjeta de crédito extranjera conviene: liquida al tipo de cambio de mercado y en hoteles evita el IVA de 21%.</li>
+        <li>Llevar algo de efectivo en dólares (billetes nuevos de US$100) y cambiar en casas de cambio o Western Union; los cajeros cobran comisiones altas.</li>
+        <li>Propina: 10% en restaurantes, en efectivo. En taxis se redondea.</li>
+        <li>Pedir "factura B" en hoteles para que apliquen la exención de IVA a turistas.</li>
+      </ul></div>
+      <div class="card tip"><h3>Moverse</h3><ul class="clean">
+        <li>En Buenos Aires: tarjeta SUBE (se compra en kioscos) para subte y colectivos; Uber y Cabify funcionan muy bien y son baratos.</li>
+        <li>Los vuelos internos salen de Aeroparque (en la ciudad), no de Ezeiza. Entre ambos hay 45 a 70 minutos.</li>
+        <li>En Bariloche conviene alquilar auto 2 días (Circuito Chico y Colonia Suiza); en Mendoza contratar la excursión con guía, la ruta a Chile es de montaña.</li>
+        <li>Reservar los vuelos internos de Aerolíneas 4 a 6 meses antes; los directos Iguazú a Bariloche tienen pocas frecuencias.</li>
+      </ul></div>
+      <div class="card tip"><h3>Qué empacar</h3><ul class="clean">
+        <li>Capas: en un mismo viaje hay 31 °C de selva y 5 °C de montaña. Campera impermeable liviana para Iguazú y abrigo para Bariloche.</li>
+        <li>Zapatos cerrados con buena suela para las pasarelas mojadas y los senderos.</li>
+        <li>Repelente, protector solar factor 50 y una funda impermeable para el celular (la Gran Aventura te empapa).</li>
+        <li>Adaptador de enchufe tipo I (dos patas planas en V). Voltaje 220.</li>
+      </ul></div>
+      <div class="card tip"><h3>Costumbres para aprender</h3><ul class="clean">
+        <li>El mate se comparte: una persona ceba y pasa el mate; se devuelve sin decir gracias hasta que no querés más.</li>
+        <li>Saludo con un beso en la mejilla, también entre hombres. Los argentinos usan "vos" en vez de "tú".</li>
+        <li>La merienda (5 a 6 de la tarde) con medialunas es sagrada; la cena no empieza antes de las 9.</li>
+        <li>Fútbol: preguntar "¿de qué cuadro sos?" abre cualquier conversación.</li>
+      </ul></div>
+      <div class="card tip"><h3>Seguridad y salud</h3><ul class="clean">
+        <li>Buenos Aires es segura en los barrios de la ruta; en La Boca quedarse en Caminito y alrededores y salir antes del anochecer.</li>
+        <li>Celulares guardados en la calle, como en cualquier ciudad grande.</li>
+        <li>Agua de la canilla es potable en las cuatro ciudades.</li>
+        <li>En Iguazú no tocar los coatíes ni darles comida; en Bariloche el sol de montaña quema aunque haga frío.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Precios:</strong> aproximados en dólares a octubre de 2026, a partir de tarifas publicadas de Copa, Avianca y Aerolíneas Argentinas, la Administración de Parques Nacionales (entrada a Iguazú AR$ 60,000 para extranjeros, incluye el Tren Ecológico) y buscadores de hoteles. Verificar antes de reservar.</p>
+    <p><strong>Fuentes:</strong> <a href="https://iguazuargentina.com/planifica-tu-visita/tarifas/">Tarifas Parque Nacional Iguazú</a> · <a href="https://www.copaair.com/en/flights-from-san-juan-to-buenos-aires-ar">Copa Airlines SJU a EZE</a> · <a href="https://www.google.com/travel/flights/flights-from-san-juan-to-buenos-aires.html?gl=PR&hl=es">Google Flights</a> · <a href="https://relatosnomadas.com/cuanto-cuesta-viajar-buenos-aires/">Presupuesto Buenos Aires 2026</a> · <a href="https://www.argentina.travel/es/novedades/5-bodegones-portenos-que-no-podes-perderte-en-tu-visita-por-buenos-aires">Bodegones porteños, Argentina.travel</a> · <a href="https://www.argentina.travel/actividades/colonia-suiza">Colonia Suiza</a> · <a href="https://buenosaires.gob.ar/noticias/comenzaron-florecer-los-jacarandas-en-las-calles-y-los-parques-portenos">Jacarandás en Buenos Aires</a> · <a href="https://latamtravellers.com/es/blogs/news/best-time-to-visit-argentina-2026">Mejor época para visitar Argentina</a></p>
+    <p>Fotos: Freepik (uso de vista previa). Plan preparado para la familia de Luis, Vega Baja, Puerto Rico.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var IMG={
+    ig1:"fotos/ig1.jpg",
+    ig2:"fotos/ig2.jpg",
+    tuc:"fotos/tuc.jpg",
+    br1:"fotos/br1.jpg",
+    br2:"fotos/br2.jpg",
+    br3:"fotos/br3.jpg",
+    mz1:"fotos/mz1.jpg",
+    mz2:"fotos/mz2.jpg",
+    ba1:"fotos/ba1.jpg",
+    ba2:"fotos/ba2.jpg"
+  };
+  var DAYS=[
+    {r:"vu",n:1,d:"Sábado 6 de noviembre",t:"Salida de San Juan",m:"Vuelo SJU a Buenos Aires con escala en Panamá (Copa) o Bogotá (Avianca). Salida al mediodía, llegada a Ezeiza a la mañana siguiente.",a:"Escala de 2 a 4 horas. Cargar los celulares, descargar mapas offline de las cuatro ciudades y la app de Uber.",e:"Vuelo nocturno de 7 a 8 horas. Dormir todo lo posible: el día 2 empieza temprano.",learn:"Argentina tiene una hora más que Puerto Rico en noviembre (UTC menos 3). El jet lag es mínimo, lo que cansa es la noche en el avión.",local:"Reservar asientos juntos al comprar; en la escala comprar agua antes de embarcar.",eat:"Cena en el avión. Llevar snacks para los chicos.",c:0,img:null},
+    {r:"ba",n:2,d:"Domingo 7 de noviembre",t:"Llegada y Palermo a paso lento",m:"Aterrizaje en Ezeiza cerca de las 8 am. Transfer privado al hotel en Palermo (50 min, US$35). Dejar las valijas y salir a caminar.",a:"Bosques de Palermo: el Rosedal, el Jardín Japonés (la mayor colección de koi fuera de Japón) y el Planetario Galileo Galilei. Los domingos el parque se llena de familias con mate, rollers y bicis de alquiler.",e:"Plaza Serrano y las calles de Palermo Soho, llenas de murales. Cena temprana y a dormir: el día 3 es largo.",learn:"Los jacarandás que ven por todos lados los plantó el paisajista francés Carlos Thays en 1890. Hay más de 18,000 en la ciudad y florecen justo estas semanas; en 2015 fue declarado el árbol distintivo de Buenos Aires.",local:"Los domingos a la tarde los porteños van al Rosedal con el mate. Compren uno con bombilla en un kiosco y aprendan a cebarlo ahí mismo.",eat:"Almuerzo en El Preferido de Palermo (milanesa y tortilla). Merienda en Rapanui con helado. Cena liviana de empanadas.",c:45,img:"ba2"},
+    {r:"ba",n:3,d:"Lunes 8 de noviembre",t:"El centro histórico y el Teatro Colón",m:"Plaza de Mayo: Casa Rosada, el Cabildo y la Catedral donde fue arzobispo el Papa Francisco. Caminar por Avenida de Mayo hasta el Palacio Barolo y subir al faro (tour de 1 hora, vistas de toda la ciudad).",a:"Café Tortoni (desde 1858) para un chocolate con churros. Visita guiada al Teatro Colón, uno de los tres teatros con mejor acústica del mundo. Foto en el Obelisco cruzando la 9 de Julio, la avenida más ancha del mundo.",e:"Calle Corrientes de noche: librerías abiertas hasta la 1 am, pizza de parado en Güerrín y teatros iluminados.",learn:"El Palacio Barolo (1923) está diseñado según la Divina Comedia de Dante: el infierno en la planta baja, el purgatorio en los pisos medios y el paraíso en el faro. Tiene 100 metros, uno por cada canto del poema.",local:"El tour del Colón conviene reservarlo online; los lunes hay menos turistas. En Corrientes busquen los descuentos de teatro del día en la boletería de Cartelera Baires.",eat:"Almuerzo en Los Galgos (bar notable). Cena en Pizzería Güerrín, pedir muzzarella y fainá.",c:180,img:null},
+    {r:"ba",n:4,d:"Martes 9 de noviembre",t:"La Boca, San Telmo y Puerto Madero",m:"Caminito y las casas de chapa pintadas de La Boca. Fundación Proa (arte contemporáneo con una terraza con vista al Riachuelo) y el Museo Quinquela Martín, el pintor que inventó el color del barrio. Opcional: tour del estadio La Bombonera.",a:"Almuerzo en El Obrero. Uber a San Telmo: el Mercado de San Telmo (1897), la Plaza Dorrego y las tiendas de antigüedades de la calle Defensa.",e:"Caminata por la Reserva Ecológica Costanera Sur (los porteños van a correr y ver aves) y el Puente de la Mujer de Puerto Madero al atardecer.",learn:"Caminito era una vía de tren abandonada. En los años 50 el pintor Benito Quinquela Martín convenció a los vecinos de pintar las casas con los restos de pintura de los barcos. El nombre viene del tango Caminito de 1926.",local:"La Boca de día, nunca de noche, y sin alejarse de las cuadras turísticas. En San Telmo los locales van al mercado a comer en los puestos, no a los restaurantes de la plaza.",eat:"Almuerzo en El Obrero (puchero o pasta). Choripán en la Costanera Sur a la tarde. Cena en Puerto Madero o pizza en casa.",c:70,img:"ba1"},
+    {r:"ba",n:5,d:"Miércoles 10 de noviembre",t:"Recoleta, libros y el Buenos Aires que no sale en las fotos",m:"Cementerio de la Recoleta (tumba de Evita, laberinto de mausoleos; hay tour en español). Plaza Francia y Avenida del Libertador bajo los jacarandás, la mejor foto violeta del viaje.",a:"El Ateneo Grand Splendid, el teatro de 1919 convertido en librería, elegida la más linda del mundo. Después, el barrio de Chacarita y Villa Crespo: cafés de especialidad, el Mercado de Villa Crespo y las calles donde viven los porteños de verdad.",e:"Opcional: cena show de tango (El Querandí o Rojo Tango). Alternativa local: una milonga abierta como La Catedral, donde se baila de verdad.",learn:"El cementerio de la Recoleta fue el huerto de los frailes recoletos. Ahí están enterrados 18 presidentes y la heredera Rufina Cambaceres, con una de las leyendas más contadas de la ciudad.",local:"En El Ateneo se puede leer en los palcos sin comprar nada. En Chacarita pidan un cortado y medialunas en la panadería Atelier Fuerza o un café en Lattente.",eat:"Almuerzo en Don Ignacio (Rivadavia 3439), el rey de la milanesa, o en El Antojo, ganador de la mejor milanesa de bodegón. Cena en Villa Crespo (parrilla La Cabrera Norte o pizza de Pizza Paradiso).",c:40,img:null},
+    {r:"ba",n:6,d:"Jueves 11 de noviembre",t:"Tigre y el Delta del Paraná",m:"Tren Mitre desde Retiro a Tigre (1 hora, US$1 por persona con SUBE). Paseo en lancha colectiva por los ríos del Delta, con casas sobre pilotes y almacenes flotantes.",a:"Almuerzo en una isla (Gato Blanco o Alpenhaus) y regreso. Puerto de Frutos: mercado de artesanías, muebles de mimbre y mates. Museo de Arte de Tigre, un casino de 1910 sobre el río.",e:"Regreso a Palermo. Noche de hacer valijas: mañana se vuela a la selva.",learn:"El Delta del Paraná es uno de los más grandes del mundo y sigue creciendo hacia el Río de la Plata unos 70 metros por año. Las islas no tienen calles: el correo, la escuela y el almacén llegan en lancha.",local:"Los porteños van a Tigre en el Tren de la Costa o en lancha colectiva (Interisleña), no en los catamaranes turísticos. Es la mitad de precio y se ve la vida real de las islas.",eat:"Almuerzo en Gato Blanco (pescado de río y pastas) o picnic en la isla. Cena de despedida en La Carnicería (parrilla moderna, Palermo).",c:110,img:null},
+    {r:"ig",n:7,d:"Viernes 12 de noviembre",t:"A la selva: Puerto Iguazú",m:"Vuelo Aeroparque a Iguazú (1 h 50, sale 9 am). Transfer al hotel en la selva de Iryapú (15 min).",a:"Piscina y descanso con el calor de la tarde. A las 4 pm, La Aripuca: una trampa guaraní gigante hecha con 30 troncos de árboles rescatados; se aprende sobre la selva misionera y se prueba helado de yerba mate.",e:"Hito Tres Fronteras al atardecer: desde un mismo punto se ven Argentina, Brasil y Paraguay, con los ríos Iguazú y Paraná encontrándose. Show de agua y luces al caer el sol.",learn:"Iguazú significa agua grande en guaraní (y = agua, guazú = grande). La leyenda dice que un dios serpiente partió el río para castigar a la pareja Naipí y Tarobá que huía en canoa.",local:"Al Hito van las familias de Puerto Iguazú a tomar mate y ver el show gratuito. Lleven la termo; la venden en cualquier kiosco.",eat:"Almuerzo en el hotel. Cena en Aqva: surubí y pacú, los pescados del río Paraná.",c:30,img:"tuc"},
+    {r:"ig",n:8,d:"Sábado 13 de noviembre",t:"Cataratas del Iguazú, el día grande",m:"Entrar al parque a las 8 am, antes que los tours. Tren Ecológico hasta la Estación Garganta del Diablo y caminar 1.1 km de pasarela hasta el borde del salto más grande: 80 metros de caída y 1,500 metros cúbicos por segundo.",a:"Paseo Superior (1.3 km, sin escaleras) por encima de los saltos y Paseo Inferior (1.4 km) hasta la base. Gran Aventura: lancha semirrígida que entra bajo el salto San Martín (desde los 12 años; los más chicos hacen el paseo ecológico en balsa).",e:"Regreso al hotel a las 5 pm para la piscina. Noche tranquila. El tope de la entrada: guardarla, mañana vale 50%.",learn:"Son 275 saltos a lo largo de 2.7 km y el 80% está del lado argentino. Cuando Eleanor Roosevelt las vio dijo: pobre Niágara. Son Patrimonio de la Humanidad desde 1984 y una de las 7 Maravillas Naturales del Mundo.",local:"Garganta del Diablo primero y temprano: a las 11 am ya no se puede caminar. Lleven ponchos de lluvia baratos; en las pasarelas inferiores se moja todo el mundo.",eat:"Sándwiches y fruta en la mochila (cuidado con los coatíes). Cena en La Rueda 1975 con parrilla para toda la familia.",c:170,img:"ig1"},
+    {r:"ig",n:9,d:"Domingo 14 de noviembre",t:"Fauna de la selva y vuelo a la Patagonia",m:"Güirá Oga (la casa de los pájaros): refugio que rehabilita animales rescatados del tráfico; tucanes, monos carayá, yaguaretés que no pueden volver a la selva. Los chicos recorren con guía 1.5 horas.",a:"Opción A: segundo día en el parque con 50% de descuento para el Sendero Macuco (3.5 km hasta el Salto Arrechea, se puede bañar). Opción B: lado brasileño (visa electrónica). Almuerzo y transfer al aeropuerto.",e:"Vuelo directo Iguazú a Bariloche (3 horas). Llegada de noche, transfer al hotel frente al lago. De 30 °C a 8 °C en una tarde.",learn:"El yaguareté (jaguar) es el felino más grande de América y en Misiones quedan menos de 100. Güirá Oga trabaja con el Parque Nacional para reintroducir especies.",local:"El vuelo directo Iguazú a Bariloche de Aerolíneas opera martes y sábados en 2026; si en 2027 no coincide con el domingo, la ruta es por Aeroparque (1 h 50 + 2 h 20) y conviene salir temprano.",eat:"Chipa y jugo en La Feirinha para el camino. Cena tarde en Bariloche: El Boliche de Alberto queda a 3 cuadras del hotel.",c:50,img:"ig2"},
+    {r:"br",n:10,d:"Lunes 15 de noviembre",t:"Circuito Chico y el Cerro Campanario",m:"Auto de alquiler o excursión por el Circuito Chico (60 km). Primera parada: Cerro Campanario, aerosilla de 7 minutos hasta el mirador que National Geographic eligió entre las 10 mejores vistas del mundo: lagos Nahuel Huapi y Moreno, la península Llao Llao y los Andes nevados.",a:"Hotel Llao Llao (té de la tarde en el hotel más famoso de la Patagonia, no hace falta hospedarse). Capilla San Eduardo, Puerto Pañuelo, Bahía López y el Punto Panorámico.",e:"Cervecería Patagonia al atardecer con vista al lago. Regreso por la Avenida Bustillo.",learn:"El Parque Nacional Nahuel Huapi es el más antiguo de Argentina: nació en 1903 cuando el Perito Moreno donó tierras que el Estado le había regalado. El Llao Llao y el Centro Cívico los diseñó Alejandro Bustillo en los años 30 para que Bariloche se pareciera a los Alpes.",local:"Suban al Campanario a pie si tienen piernas (30 minutos) y bajen en aerosilla: se ahorra la mitad y la vista en el camino es mejor. El parque municipal Llao Llao tiene senderos cortos gratis (Cerrito Llao Llao, 1 hora, apto para chicos).",eat:"Almuerzo en la confitería del Campanario. Té en el Llao Llao (US$35 pp, scones y torta galesa). Cena en la Cervecería Patagonia.",c:90,img:"br1"},
+    {r:"br",n:11,d:"Martes 16 de noviembre",t:"Isla Victoria y el Bosque de Arrayanes",m:"Catamarán desde Puerto Pañuelo (sale 9:30 am) por el lago Nahuel Huapi hasta Isla Victoria: senderos entre coihues gigantes, pinturas rupestres y una playa de arena volcánica.",a:"Navegación a la Península de Quetrihué y el Bosque de Arrayanes: 12 hectáreas de árboles de corteza canela y fría al tacto, de más de 600 años. Caminata de 1 hora en pasarelas.",e:"Regreso a las 5:30 pm. Centro Cívico de Bariloche, el Museo de la Patagonia (gratis, con la historia mapuche de la región) y chocolate en la calle Mitre.",learn:"La leyenda dice que el Bosque de Arrayanes inspiró el bosque de la película Bambi de Disney; los guías lo cuentan aunque Disney nunca lo confirmó. Lo cierto es que es el único bosque puro de arrayanes del mundo.",local:"Para los chicos, el Museo de la Patagonia tiene el esqueleto de un ballena y la historia de Nahuelito, el monstruo del lago. A las 5 pm los barilochenses compran chocolate en Mamuschka y toman un submarino.",eat:"Almuerzo en el restaurante de Isla Victoria o picnic llevado. Cena en Alto el Fuego (reservar).",c:300,img:"br2"},
+    {r:"br",n:12,d:"Miércoles 17 de noviembre",t:"Colonia Suiza, cascadas y lago Gutiérrez",m:"Colonia Suiza en día de feria (miércoles y domingos): el pueblo que fundaron los Goye, inmigrantes del Valais suizo que llegaron en 1883 a pie desde Chile. Artesanos, casas de madera de 1937 y el curanto cocinándose bajo tierra desde las 10 am.",a:"Almuerzo de curanto a la 1 pm. Después, la Cascada de los Duendes (caminata de 20 minutos desde Villa Los Coihues, apta para chicos) y la playa del lago Gutiérrez.",e:"Cerro Otto: teleférico hasta la confitería giratoria (da la vuelta completa en 20 minutos) para ver el atardecer sobre todos los lagos. Cena en el centro.",learn:"El curanto es una técnica de cocina de los pueblos originarios de Chiloé: se cava un hoyo, se calientan piedras con fuego, se tapa la comida con hojas de maqui y nalca y se cocina 2 horas con el vapor. Cada marzo Colonia Suiza celebra la Fiesta Nacional del Curanto.",local:"La feria de Colonia Suiza es el paseo de domingo de las familias de Bariloche: frambuesas con crema, cerveza artesanal Berlina y pan de campo. Lleguen antes de las 11 para ver abrir el curanto.",eat:"Curanto en la feria. Merienda de frambuesas con crema. Cena en Casita Suiza (fondue de queso) o pasta en Il Gabbiano.",c:130,img:"br3"},
+    {r:"br",n:13,d:"Jueves 18 de noviembre",t:"Última mañana en el lago y vuelo a Mendoza",m:"Mañana libre: kayak en el lago desde Playa Bonita (US$25 por hora) o el tobogán gigante del Cerro Viejo con aerosilla. Compras de chocolate para llevar (dura 3 meses).",a:"Vuelo Bariloche a Mendoza (2 h, directo de Aerolíneas en días alternos; si no, vía Aeroparque). Llegada a la tarde, hotel en el centro o en Chacras de Coria.",e:"Caminata por la Plaza Independencia, las acequias que riegan los árboles de las veredas y la Avenida Arístides Villanueva, la calle de bares de la ciudad. Cena de bodegón.",learn:"Mendoza fue destruida por un terremoto en 1861 y se reconstruyó con calles anchas, veredas con árboles y cinco plazas grandes para refugiarse en caso de sismo. Las acequias de las veredas son del sistema de riego huarpe, anterior a los incas.",local:"En Mendoza se cena después de las 9:30. La siesta se respeta: de 1 a 5 pm cierra todo, salvo restaurantes.",eat:"Cena en Fuente y Fonda (porciones para compartir, flan con dulce de leche) o pastas en La Marchigiana.",c:60,img:null},
+    {r:"mz",n:14,d:"Viernes 19 de noviembre",t:"Alta Montaña: Puente del Inca y el Aconcagua",m:"Excursión de día completo por la Ruta 7 hacia Chile (salida 7:30 am). Dique Potrerillos, Uspallata (donde se juntó el Ejército de los Andes de San Martín en 1817) y los cerros de colores de la Quebrada de Horcones.",a:"Puente del Inca: arco natural de 48 metros, amarillo por los minerales de sus aguas termales, que Darwin dibujó en 1835. Parque Provincial Aconcagua: caminata de 1 hora a la Laguna de Horcones con el mirador del cerro más alto de América (6,961 m). Las Cuevas, el pueblo más alto de Mendoza, a 3,200 m, frente a la frontera.",e:"Regreso a Mendoza a las 7 pm. Noche de descanso después de 12 horas de montaña.",learn:"Puente del Inca es parte del Qhapaq Ñan, el camino inca, Patrimonio de la Humanidad desde 2014. Al lado quedan las ruinas del hotel termal de 1925 que destruyó un alud en 1965. El Aconcagua es la montaña más alta fuera de Asia.",local:"Lleven abrigo aunque en la ciudad haga 28 °C: en Las Cuevas puede haber 0 °C y viento. Las empanadas de Uspallata en la parada del tour son las mejores del viaje.",eat:"Desayuno en María Antonieta. Almuerzo en Puente del Inca o Uspallata (empanadas y chivito). Cena de pizzas en Mendoza.",c:260,img:"mz1"},
+    {r:"mz",n:15,d:"Sábado 20 de noviembre",t:"Viñedos con los Andes de fondo y regreso",m:"Luján de Cuyo, la cuna del Malbec (40 minutos): visita familiar a Bodega Lagarde o Ruca Malen con recorrido por los viñedos, juegos de aromas para los chicos y almuerzo de pasos con vista a la cordillera.",a:"Vuelo Mendoza a Aeroparque (1 h 50, sale 3:30 pm). Transfer privado de Aeroparque a Ezeiza (1 hora).",e:"Vuelo nocturno Ezeiza a San Juan con escala. Llegada a Puerto Rico el domingo 21 al mediodía.",learn:"El Malbec es una uva francesa que casi desapareció en Francia y se convirtió en la insignia argentina gracias al agrónomo Michel Pouget, que la trajo en 1853. Luján de Cuyo fue la primera denominación de origen de Argentina (1993).",local:"Compren el vino en la bodega: viaja en la valija facturada envuelto en ropa. En Ezeiza el free shop tiene dulce de leche y alfajores Havanna a buen precio para regalar.",eat:"Almuerzo en bodega (menú infantil disponible). Cena en el avión.",c:170,img:"mz2"}
+  ];
+  var NAMES={ba:"Buenos Aires",ig:"Iguazú",br:"Bariloche",mz:"Mendoza",vu:"Vuelo"};
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+  function renderDays(){
+    var h="";
+    DAYS.forEach(function(x){
+      var img=x.img?'<div class="dimg"><img src="'+IMG[x.img]+'" alt="'+esc(x.t)+'" loading="lazy" onerror="this.parentNode.remove()"></div>':"";
+      h+='<article class="day'+(x.img?' has-img':'')+'" data-r="'+x.r+'">'+
+        '<div class="dbody"><div class="dhead"><span class="dnum">Día '+x.n+' · '+NAMES[x.r]+'</span><span class="ddate">'+esc(x.d)+'</span><h3>'+esc(x.t)+'</h3></div>'+
+        '<div class="slots"><div class="slot"><b>Mañana</b><p>'+esc(x.m)+'</p></div><div class="slot"><b>Tarde</b><p>'+esc(x.a)+'</p></div><div class="slot"><b>Noche</b><p>'+esc(x.e)+'</p></div></div>'+
+        '<div class="notes"><div class="note learn"><b>Para aprender</b>'+esc(x.learn)+'</div><div class="note local"><b>Como un local</b>'+esc(x.local)+'</div><div class="note eat"><b>Para comer</b>'+esc(x.eat)+'</div></div>'+
+        '<div class="dcost">Entradas y actividades del día (familia de 4): <strong class="num">'+(x.c?'≈ US$ '+x.c:'sin costo')+'</strong></div></div>'+img+'</article>';
+    });
+    document.getElementById("days").innerHTML=h;
+  }
+  renderDays();
+  var tabs=document.querySelectorAll(".tabs button");
+  tabs.forEach(function(b){b.addEventListener("click",function(){
+    tabs.forEach(function(o){o.setAttribute("aria-pressed",o===b?"true":"false")});
+    var f=b.dataset.f;
+    document.querySelectorAll(".day").forEach(function(d){d.hidden=!(f==="all"||d.dataset.r===f||(f==="ba"&&d.dataset.r==="vu"))});
+  })});
+
+  /* hotels */
+  var HOTELS={
+    ba:{city:"Buenos Aires",nights:5,eco:{n:"Departamento en Palermo (Airbnb)",p:110,d:"2 habitaciones con cocina, a 3 cuadras de Plaza Serrano. Lavar ropa y desayunar en casa baja mucho el gasto.",pills:["Cocina","Palermo Soho"]},mid:{n:"Hotel Clásico, Palermo Hollywood",p:190,d:"Hotel boutique en un edificio de los años 20, habitaciones familiares conectadas, rooftop con pileta. Cerca de los bodegones y del tren a Tigre.",pills:["Desayuno","Pileta","Familiar"]},lux:{n:"Palacio Duhau · Park Hyatt, Recoleta",p:450,d:"Palacio de 1934 con jardines, a dos cuadras del cementerio de la Recoleta y de los jacarandás de Alvear.",pills:["Palacio","Jardines","Spa"]}},
+    ig:{city:"Iguazú",nights:2,eco:{n:"Merit Iguazú, centro de Puerto Iguazú",p:120,d:"Hotel sencillo con pileta, a 5 minutos a pie del Hito Tres Fronteras y de los restaurantes.",pills:["Pileta","Centro"]},mid:{n:"Loi Suites Iguazú, selva de Iryapú",p:260,d:"154 habitaciones en 600 hectáreas de selva, 3 piscinas unidas por puentes colgantes, sendero propio al río, menú infantil. A 15 minutos del parque.",pills:["Desayuno","3 piscinas","Selva"]},lux:{n:"Gran Meliá Iguazú, dentro del parque",p:520,d:"El único hotel dentro del Parque Nacional: vista a la Garganta del Diablo desde la pileta y entrada al parque antes que nadie.",pills:["Vista cataratas","Dentro del parque"]}},
+    br:{city:"Bariloche",nights:4,eco:{n:"Hampton by Hilton Bariloche",p:120,d:"Céntrico, moderno, desayuno incluido, habitaciones con dos camas queen. A 2 cuadras del Centro Cívico.",pills:["Desayuno","Centro"]},mid:{n:"Cacique Inacayal Lake & Spa",p:230,d:"Sobre la orilla del Nahuel Huapi a 700 m del centro: pileta climatizada con vista al lago, spa, habitaciones familiares.",pills:["Desayuno","Frente al lago","Pileta climatizada"]},lux:{n:"Llao Llao Resort, Golf & Spa",p:650,d:"El hotel más icónico de la Patagonia (1940), entre los lagos Moreno y Nahuel Huapi, con kids club Nahuelito y piscina infinita.",pills:["Icónico","Kids club","Spa"]}},
+    mz:{city:"Mendoza",nights:2,eco:{n:"Departamento en la 5ta Sección",p:100,d:"El barrio residencial más lindo de la ciudad, a 10 minutos a pie del Parque San Martín.",pills:["Cocina","Residencial"]},mid:{n:"Park Hyatt Mendoza, Plaza Independencia",p:200,d:"Fachada de 1926 frente a la plaza principal, pileta al aire libre, desayuno con medialunas mendocinas. Punto de partida de todas las excursiones.",pills:["Desayuno","Pileta","Plaza central"]},lux:{n:"Entre Cielos, Vistalba",p:420,d:"Lodge entre viñedos de Luján de Cuyo con el primer hamam de Latinoamérica y los Andes en la ventana.",pills:["Viñedos","Hamam","Andes"]}}
+  };
+  var tier="mid";
+  function renderHotels(){
+    var h="";["ba","ig","br","mz"].forEach(function(k){var c=HOTELS[k],t=c[tier];
+      h+='<div class="card hotel"><span class="tag">'+c.city+' · '+c.nights+' noches</span><h3>'+esc(t.n)+'</h3><div class="price num">US$ '+t.p+' <small>/ noche</small></div><p style="font-size:.95rem">'+esc(t.d)+'</p><div class="pills">'+t.pills.map(function(p){return '<span class="pill">'+esc(p)+'</span>'}).join("")+'</div><div class="dcost">Estadía: <strong class="num">US$ '+(t.p*c.nights).toLocaleString("en-US")+'</strong></div></div>';
+    });
+    document.getElementById("hotels").innerHTML=h;
+  }
+  function setTier(t){tier=t;document.querySelectorAll("#tierSeg button,#tierSeg2 button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.t===t?"true":"false")});renderHotels();calc();}
+  document.querySelectorAll("#tierSeg button,#tierSeg2 button").forEach(function(b){b.addEventListener("click",function(){setTier(b.dataset.t)})});
+
+  /* calculator */
+  var st={adults:2,kids:2};
+  document.querySelectorAll("[data-step]").forEach(function(b){b.addEventListener("click",function(){
+    var k=b.dataset.step,v=st[k]+Number(b.dataset.d);
+    if(k==="adults")v=Math.min(6,Math.max(1,v));else v=Math.min(6,Math.max(0,v));
+    st[k]=v;document.getElementById(k).textContent=v;calc();
+  })});
+  document.querySelectorAll("#opts input").forEach(function(i){i.addEventListener("change",calc)});
+  var ARS=1450;
+  var FOOD={eco:22,mid:38,lux:65};
+  var FIX_A=42+25+20+15+20+60+30+7+10+5+10+5, FIX_K=42+12+10+12+15+45+20+0+7+3+0+0;
+  function money(n){return "US$ "+Math.round(n).toLocaleString("en-US")}
+  function compute(tr){
+    var A=st.adults,K=st.kids,P=A+K,days=14;
+    var intl=850*A+800*K;
+    var dom=650*A+600*K;
+    var hot=0;["ba","ig","br","mz"].forEach(function(k){var c=HOTELS[k];var room=c[tr].p*(P>4?1.5:1);hot+=room*c.nights});
+    var food=FOOD[tr]*days*(A+0.7*K);
+    var act=FIX_A*A+FIX_K*K;
+    var opt=0;document.querySelectorAll("#opts input:checked").forEach(function(i){opt+=Number(i.dataset.a)*A+Number(i.dataset.k)*K});
+    return intl+dom+hot+food+act+opt+(300+40*P)+45*P+(400+50*P);
+  }
+  function calc(){
+    var A=st.adults,K=st.kids,P=A+K,days=14;
+    var intl=850*A+800*K;
+    var dom=650*A+600*K;
+    var hot=0;["ba","ig","br","mz"].forEach(function(k){var c=HOTELS[k];var room=c[tier].p*(P>4?1.5:1);hot+=room*c.nights});
+    var food=FOOD[tier]*days*(A+0.7*K);
+    var act=FIX_A*A+FIX_K*K;
+    var opt=0;document.querySelectorAll("#opts input:checked").forEach(function(i){opt+=Number(i.dataset.a)*A+Number(i.dataset.k)*K});
+    var trans=300+40*P;
+    var ins=45*P;
+    var extra=400+50*P;
+    var lines=[
+      ["Vuelos internacionales","SJU a Buenos Aires ida y vuelta, US$850 por adulto y US$800 por niño",intl,"var(--celeste)"],
+      ["Vuelos internos","4 tramos: Aeroparque a Iguazú, Iguazú a Bariloche, Bariloche a Mendoza, Mendoza a Aeroparque",dom,"var(--lago)"],
+      ["Hoteles","14 noches, nivel "+({eco:"económico",mid:"cómodo",lux:"premium"})[tier]+(P>4?" (habitación extra)":""),hot,"var(--andes)"],
+      ["Comida","US$"+FOOD[tier]+" por adulto y día, niños al 70%, 14 días",food,"var(--selva)"],
+      ["Entradas y actividades fijas","Iguazú, Colón, Barolo, Campanario, Tigre, Alta Montaña, Cerro Otto, refugios y museos",act,"var(--sol)"],
+      ["Actividades opcionales","Las marcadas a la izquierda",opt,"#C96B9A"],
+      ["Transporte local","Transfers de aeropuerto, Uber, SUBE, auto 2 días en Bariloche",trans,"#7A8A9C"],
+      ["Seguro de viaje","Cobertura médica y de equipaje, US$45 por persona",ins,"#5CA9A3"],
+      ["Imprevistos y recuerdos","Chocolate, vino, mates, propinas y margen",extra,"#B49A5C"]
+    ];
+    var total=lines.reduce(function(s,l){return s+l[2]},0);
+    document.getElementById("total").textContent=money(total);
+    document.getElementById("perPerson").textContent=money(total/P)+" por persona · "+money(total/15)+" por día de viaje";
+    document.getElementById("totalLbl").textContent="Total estimado · "+A+" adulto"+(A>1?"s":"")+(K?" y "+K+" niño"+(K>1?"s":""):"")+" · nivel "+({eco:"económico",mid:"cómodo",lux:"premium"})[tier];
+    document.getElementById("lines").innerHTML=lines.map(function(l){return '<div class="line"><span class="sw" style="background:'+l[3]+'"></span><div><div class="lbl">'+l[0]+'</div><div class="sub">'+l[1]+'</div></div><div class="amt num">'+money(l[2])+'</div></div>'}).join("");
+    document.getElementById("bar").innerHTML=lines.map(function(l){return '<i style="width:'+(100*l[2]/total)+'%;background:'+l[3]+'"></i>'}).join("");
+    document.getElementById("arsNote").textContent="En pesos argentinos, al cambio de referencia de octubre de 2026 (US$1 ≈ AR$ "+ARS.toLocaleString("en-US")+"), el total ronda AR$ "+Math.round(total*ARS).toLocaleString("en-US")+". Con los mismos viajeros y actividades: nivel económico "+money(compute("eco"))+", cómodo "+money(compute("mid"))+", premium "+money(compute("lux"))+". Sumar un 10 a 15% de margen por tarifas aéreas e inflación.";
+  }
+  renderHotels();calc();
+})();
+</script>
+
+</body>
+</html>
