@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Plan de viaje familiar de 15 días por Buenos Aires, Iguazú, Bariloche y Mendoza, noviembre 2027.">
 <meta property="og:title" content="Argentina en Familia 2027">
-<meta property="og:description" content="Itinerario día a día, piano bar, hotel o Airbnb, plan económico y costos por persona.">
+<meta property="og:description" content="Itinerario día a día, River en el Monumental, piano bar, plan económico y costos por persona.">
 <meta property="og:image" content="https://lortiz413.github.io/argentina-en-familia/fotos/hero.jpg">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Argentina en Familia 2027</title>
@@ -334,6 +334,30 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.6em;width:9px;heigh
 .trick b{font-family:var(--display);font-weight:800;display:block;margin-bottom:6px}
 .trick p{font-size:.94rem;color:var(--muted)}
 
+/* river */
+.river{background:linear-gradient(180deg,var(--bg),var(--surface2))}
+.rgrid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center}
+@media (max-width:860px){.rgrid{grid-template-columns:minmax(0,1fr)}}
+.pitch svg{width:100%;height:auto;display:block;border-radius:18px;box-shadow:var(--shadow)}
+.cal{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+@media (max-width:520px){.cal{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cday{border-radius:12px;padding:10px;border:1.5px solid var(--line);background:var(--surface);display:grid;gap:3px;min-width:0}
+.cday .dw{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cday .dn{font-family:var(--display);font-weight:800;font-size:1.3rem;line-height:1}
+.cday .dx{font-size:.74rem;color:var(--muted);line-height:1.25}
+.cday.hi{border-color:var(--selva);background:var(--selva-soft)}
+.cday.mid{border-color:var(--sol);background:var(--sol-soft)}
+.cday.hi .dx{color:var(--selva);font-weight:600}
+.legend2{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:.85rem;color:var(--muted)}
+.legend2 span{display:inline-flex;gap:6px;align-items:center}
+.legend2 i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.rprices{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
+.rp{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:6px;align-content:start}
+.rp.top{border-color:#E3262E}
+.rp .kind{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.rp b{font-family:var(--display);font-weight:800;font-size:1.5rem}
+.rp p{font-size:.92rem;color:var(--muted)}
+
 /* tools */
 .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px}
 .conv{display:grid;gap:12px}
@@ -376,7 +400,7 @@ footer strong{color:var(--night-ink)}
 <nav class="nav" aria-label="Secciones">
   <div class="wrap">
     <div class="brand"><svg class="sun" viewBox="0 0 40 40" aria-hidden="true"><g fill="#E3A91B"><circle cx="20" cy="20" r="8"/><g id="ray"><rect x="19" y="1" width="2" height="8" rx="1"/></g><use href="#ray" transform="rotate(45 20 20)"/><use href="#ray" transform="rotate(90 20 20)"/><use href="#ray" transform="rotate(135 20 20)"/><use href="#ray" transform="rotate(180 20 20)"/><use href="#ray" transform="rotate(225 20 20)"/><use href="#ray" transform="rotate(270 20 20)"/><use href="#ray" transform="rotate(315 20 20)"/></g></svg>Argentina en familia</div>
-    <a href="#llegada">Cómo llegamos</a><a href="#mapa">La ruta</a><a href="#dias">Día a día</a><a href="#piano">Piano bar</a><a href="#estadias">Estadías</a><a href="#comer">Comer</a><a href="#costos">Costos y ahorro</a><a href="#herramientas">Herramientas</a>
+    <a href="#llegada">Cómo llegamos</a><a href="#mapa">La ruta</a><a href="#dias">Día a día</a><a href="#piano">Piano bar</a><a href="#river">River</a><a href="#estadias">Estadías</a><a href="#comer">Comer</a><a href="#costos">Costos y ahorro</a><a href="#herramientas">Herramientas</a>
   </div>
 </nav>
 
@@ -405,7 +429,7 @@ footer strong{color:var(--night-ink)}
   </div>
 </header>
 
-<div class="ticker" aria-hidden="true"><div><span>BUENOS AIRES ✦ jacarandás en flor</span><span>IGUAZÚ ✦ 275 saltos de agua</span><span>BARILOCHE ✦ chocolate y lagos</span><span>MENDOZA ✦ el Aconcagua de 6,961 m</span><span>PIANO BAR ✦ miércoles en Chacarita</span><span>MATE ✦ se comparte y no se dice gracias</span><span>MIRADOR DEL OBELISCO ✦ 67 metros sobre la 9 de Julio</span></div></div>
+<div class="ticker" aria-hidden="true"><div><span>BUENOS AIRES ✦ jacarandás en flor</span><span>IGUAZÚ ✦ 275 saltos de agua</span><span>BARILOCHE ✦ chocolate y lagos</span><span>MENDOZA ✦ el Aconcagua de 6,961 m</span><span>PIANO BAR ✦ miércoles en Chacarita</span><span>RIVER ✦ 85,000 personas en el Monumental</span><span>MATE ✦ se comparte y no se dice gracias</span><span>MIRADOR DEL OBELISCO ✦ 67 metros sobre la 9 de Julio</span></div></div>
 
 <!-- LLEGADA -->
 <section id="llegada">
@@ -531,6 +555,42 @@ footer strong{color:var(--night-ink)}
   </div>
 </section>
 
+<!-- RIVER -->
+<section id="river" class="river">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Fútbol</span>
+      <h2>Una noche en el Monumental</h2>
+      <p class="lede">Ver a River en su cancha es de las cosas más intensas que se pueden vivir en Buenos Aires. Todavía no hay fixture de 2027, pero el calendario del fútbol argentino se repite casi igual cada año, así que se puede estimar qué día cae y cuánto cuesta.</p>
+    </div>
+    <div class="rgrid">
+      <div class="card">
+        <h3 style="margin-bottom:6px">¿Qué día juega?</h3>
+        <p class="note" style="margin-bottom:14px">Estimado con el calendario de 2026: la fase regular del Clausura termina el fin de semana del 7 y 8 de noviembre, después viene la fecha FIFA y los octavos se juegan el 21 y 22. En 2027 debería repetirse con un día de diferencia.</p>
+        <div class="cal" id="rcal"></div>
+        <div class="legend2"><span><i style="background:var(--selva)"></i>Muy probable</span><span><i style="background:var(--sol)"></i>Posible</span><span><i style="background:var(--line)"></i>Sin liga o no estamos</span></div>
+      </div>
+      <div class="pitch" aria-hidden="true">
+        <svg viewBox="0 0 300 200"><rect x="0" y="0" width="300" height="200" rx="16" fill="#1F6E3E"/><g stroke="#fff" stroke-width="2" fill="none" opacity=".85"><rect x="14" y="14" width="272" height="172" rx="2"/><line x1="150" y1="14" x2="150" y2="186"/><circle cx="150" cy="100" r="26"/><rect x="14" y="58" width="40" height="84"/><rect x="246" y="58" width="40" height="84"/><rect x="14" y="80" width="14" height="40"/><rect x="272" y="80" width="14" height="40"/></g><g fill="#fff"><circle cx="150" cy="100" r="3"/></g><path d="M-20,330 L330,70 L330,108 L-20,368 Z" fill="#E3262E" opacity=".9"/><text x="150" y="92" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="40" fill="#fff">85,000</text><text x="150" y="112" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#fff">PERSONAS · NÚÑEZ, BUENOS AIRES</text></svg>
+      </div>
+    </div>
+    <h3 class="lvtitle" style="margin-top:34px">Cuánto cuesta</h3>
+    <div class="rprices">
+      <div class="rp"><span class="kind">Paquete estándar</span><b class="num">≈ US$210</b><p>Platea Centenario media, con anfitrión local que te lleva a la cancha y te explica todo.</p></div>
+      <div class="rp top"><span class="kind">Recomendado</span><b class="num">≈ US$275</b><p>Platea lateral baja (Belgrano), mejor vista del campo. Es el que usa la calculadora como referencia (US$230 promedio).</p></div>
+      <div class="rp"><span class="kind">Premium o con traslado</span><b class="num">≈ US$315 a 365</b><p>Asientos preferenciales y traslado ida y vuelta desde el hotel, con guía bilingüe.</p></div>
+      <div class="rp"><span class="kind">Superclásico contra Boca</span><b class="num">US$700 a 800</b><p>Poco probable en noviembre, pero si cae, es otra liga de precio.</p></div>
+      <div class="rp"><span class="kind">Plan B · Museo River</span><b class="num">≈ US$25</b><p>Museo y tour del estadio, todos los días de 10 am a 7 pm salvo días de partido. Niños menores de 5 gratis.</p></div>
+    </div>
+    <div class="tgrid" style="margin-top:22px">
+      <div class="trick"><b>Por qué paquete y no boletería</b><p>River vende casi todas sus entradas solo a socios. Los turistas entran con paquetes de agencias autorizadas (Tangol, Homefans y similares) que incluyen la entrada nominal y un anfitrión.</p></div>
+      <div class="trick"><b>Cuándo comprar</b><p>El fixture del año sale en enero; los días y horarios exactos los confirma la Liga unos 10 días antes. Reservar el paquete apenas se sepa si River es local esa fecha.</p></div>
+      <div class="trick"><b>Con los niños</b><p>Los niños pagan como adultos. La platea es tranquila y familiar; la "popular" de los hinchas no es para ir con chicos.</p></div>
+      <div class="trick"><b>En la cancha</b><p>Llegar 2 horas antes, llevar el pasaporte y nada de azul y amarillo. En el fútbol argentino no hay hinchas visitantes, así que todo el estadio canta para River.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ESTADIAS -->
 <section id="estadias">
   <div class="wrap">
@@ -623,6 +683,8 @@ footer strong{color:var(--night-ink)}
             <label><input type="checkbox" id="op4" data-a="60" data-k="25"><span>Almuerzo en bodega de Luján de Cuyo</span><span class="p">60 / 25</span></label>
             <label><input type="checkbox" id="op5" data-a="90" data-k="60"><span>Cena show de tango</span><span class="p">90 / 60</span></label>
             <label><input type="checkbox" id="op6" data-a="25" data-k="15"><span>Tour del estadio La Bombonera</span><span class="p">25 / 15</span></label>
+            <label><input type="checkbox" id="op8" data-a="230" data-k="230"><span>Partido de River en el Monumental (paquete)</span><span class="p">230 / 230</span></label>
+            <label><input type="checkbox" id="op9" data-a="25" data-k="15"><span>Museo River y tour del estadio</span><span class="p">25 / 15</span></label>
             <label><input type="checkbox" id="op7" data-a="105" data-k="90"><span>Lado brasileño de las cataratas (visa electrónica)</span><span class="p">105 / 90</span></label>
           </div>
         </div>
@@ -851,9 +913,10 @@ footer strong{color:var(--night-ink)}
     {r:"vu",n:1,w:"sáb",d:"Sábado 6 de noviembre",img:"fotos/vuelo.jpg",t:"Salida y encuentro en Panamá",hl:["Encuentro familiar"],
      m:"Tú sales de San Juan y la familia de Orlando, los dos con Copa hacia Panamá. Llegadas por la tarde al aeropuerto de Tocumen.",a:"Encuentro en la zona de embarque del vuelo a Buenos Aires. Cena juntos en el aeropuerto y foto del reencuentro.",e:"Vuelo nocturno Panamá a Ezeiza, unas 7 horas. Dormir todo lo posible: el día 2 empieza temprano.",
      learn:"Argentina está una hora adelante de Puerto Rico y dos horas adelante de Orlando en noviembre. El cuerpo casi no lo siente; lo que cansa es la noche en el avión.",local:"Reservar asientos juntos al comprar el tramo Panamá a Buenos Aires, aunque los boletos sean separados. Copa permite elegir asiento al reservar.",eat:"Cena en el aeropuerto de Tocumen; llevar snacks para los chicos para el vuelo.",c:0},
-    {r:"ba",n:2,w:"dom",d:"Domingo 7 de noviembre",img:"fotos/mate2.jpg",t:"Llegada y Palermo a paso lento",hl:[],
-     m:"Aterrizaje en Ezeiza cerca de las 7 am. Transfer al alojamiento en Palermo (50 minutos, unos US$40). Dejar valijas y salir.",a:"Bosques de Palermo: el Rosedal, el Jardín Japonés y el Planetario. Los domingos el parque se llena de familias con mate, patines y bicis.",e:"Plaza Serrano y los murales de Palermo Soho. Cena temprana y a dormir.",
-     learn:"Los jacarandás que tiñen la ciudad de violeta los plantó el paisajista francés Carlos Thays desde 1893. Hay más de 18,000 y florecen justo estas semanas.",local:"Comprar un mate con bombilla en un kiosco y aprender a cebarlo en el Rosedal, como hacen los porteños los domingos.",eat:"Almuerzo en El Preferido de Palermo (milanesa y tortilla babé). Merienda de helado en Rapanui.",c:45},
+    {r:"ba",n:2,w:"dom",d:"Domingo 7 de noviembre",img:"fotos/mate2.jpg",t:"Llegada, Palermo y River en el Monumental",hl:["River en el Monumental"],
+     m:"Aterrizaje en Ezeiza cerca de las 7 am. Transfer al alojamiento en Palermo (50 minutos, unos US$40). Dejar valijas y salir.",a:"Bosques de Palermo: el Rosedal, el Jardín Japonés y el Planetario. Los domingos el parque se llena de familias con mate, patines y bicis.",e:"Si River juega de local, partido en el Monumental (Núñez, a 15 minutos de Palermo). Es muy probable que esta noche se juegue la última fecha de la fase regular. Si juega de visitante: Plaza Serrano, los murales de Palermo Soho y cena temprana.",
+     learn:"El Monumental, casa de River desde 1938, es el estadio más grande de Sudamérica: tras la remodelación de 2024 caben unas 85,000 personas. Ahí Argentina ganó su primer Mundial en 1978. Y los jacarandás que tiñen la ciudad de violeta los plantó Carlos Thays desde 1893.",
+     _x:"Los jacarandás que tiñen la ciudad de violeta los plantó el paisajista francés Carlos Thays desde 1893. Hay más de 18,000 y florecen justo estas semanas.",local:"Siesta después del almuerzo: el partido suele empezar entre las 5 y las 9 de la noche. Nada de azul y amarillo (son los colores de Boca); camiseta blanca con la banda roja o ropa neutra. Llevar el pasaporte, la entrada va a tu nombre.",eat:"Almuerzo en El Preferido de Palermo. En la cancha, choripán y Coca; después, pizza en Núñez.",c:965},
     {r:"ba",n:3,w:"lun",d:"Lunes 8 de noviembre",img:"fotos/alfajores.jpg",t:"Centro histórico y el Mirador del Obelisco",hl:["Mirador del Obelisco"],
      m:"Plaza de Mayo, la Casa Rosada y el Cabildo. Caminar la Avenida de Mayo hasta el Palacio Barolo y subir a su faro.",a:"Chocolate con churros en el Café Tortoni (1858). Visita guiada al Teatro Colón.",e:"Mirador del Obelisco al atardecer (cerca de las 7:30 pm): ascensor hasta los 55 metros y una escalera caracol de 30 escalones hasta la cima. Después, pizza de parado en Güerrín y la calle Corrientes iluminada.",
      learn:"El Obelisco se levantó en 1936 en solo 31 días para los 400 años de la primera fundación de Buenos Aires. Mide 67.5 metros y desde octubre de 2025 se puede subir: la vista abarca la 9 de Julio, la avenida más ancha del mundo.",local:"Las entradas al Obelisco se compran en la web oficial del Mirador o en Civitatis y se agotan; reservar el horario del atardecer. No pueden subir menores de 4 años.",eat:"Almuerzo en Los Galgos, bar notable con vermú. Cena en Pizzería Güerrín: muzzarella y fainá.",c:290},
@@ -964,11 +1027,11 @@ footer strong{color:var(--night-ink)}
 
   /* calculator */
   var FOOD={eco:22,mid:38,lux:65},FIX_A=274,FIX_K=186,ARS=1450,shown=0;
-  S.lowcost=false;S.cook=false;S.publicT=false;S.noMza=false;S.opts={op1:1,op2:1,op3:1,op4:1};S.plan="full";
+  S.lowcost=false;S.cook=false;S.publicT=false;S.noMza=false;S.opts={op1:1,op2:1,op3:1,op4:1,op8:1};S.plan="full";
   var PLANS={
-    full:{hub:"pty",lodge:"airbnb",tier:"mid",lowcost:false,cook:false,publicT:false,noMza:false,opts:{op1:1,op2:1,op3:1,op4:1}},
-    eco:{hub:"sdq",lodge:"airbnb",tier:"eco",lowcost:true,cook:true,publicT:true,noMza:false,opts:{op1:1}},
-    min:{hub:"sdq",lodge:"airbnb",tier:"eco",lowcost:true,cook:true,publicT:true,noMza:true,opts:{op1:1}}
+    full:{hub:"pty",lodge:"airbnb",tier:"mid",lowcost:false,cook:false,publicT:false,noMza:false,opts:{op1:1,op2:1,op3:1,op4:1,op8:1}},
+    eco:{hub:"sdq",lodge:"airbnb",tier:"eco",lowcost:true,cook:true,publicT:true,noMza:false,opts:{op1:1,op8:1}},
+    min:{hub:"sdq",lodge:"airbnb",tier:"eco",lowcost:true,cook:true,publicT:true,noMza:true,opts:{op1:1,op8:1}}
   };
   function clone(o){var r={};for(var k in o){r[k]=(o[k]&&typeof o[k]==="object")?clone(o[k]):o[k]}return r}
   function withPlan(st,pl){var r=clone(st),P=PLANS[pl];for(var k in P)r[k]=(typeof P[k]==="object")?clone(P[k]):P[k];return r}
@@ -1076,6 +1139,10 @@ footer strong{color:var(--night-ink)}
   $$("#planSeg button").forEach(function(b){b.addEventListener("click",function(){if(b.dataset.plan==="custom")return;var n=withPlan(S,b.dataset.plan);for(var k in n)S[k]=n[k];sync()})});
   sync();
 
+
+  /* river calendar */
+  var RC2=[["sáb",6,"En vuelo","x"],["dom",7,"Última fecha regular. Si River es local, ¡este es!","hi"],["lun",8,"Lunes de cierre de fecha","mid"],["mar",9,"Sin liga","x"],["mié",10,"Copa Argentina o fecha entre semana, si hay","mid"],["jue",11,"Copa Argentina o fecha entre semana, si hay","mid"],["vie",12,"Iguazú","x"],["sáb",13,"Fecha FIFA, sin liga","x"],["dom",14,"Fecha FIFA, sin liga","x"],["lun",15,"Bariloche","x"],["mar",16,"Bariloche","x"],["mié",17,"Bariloche","x"],["jue",18,"Mendoza","x"],["vie",19,"Mendoza","x"],["sáb",20,"Regreso; octavos 20 y 21","x"]];
+  $("#rcal").innerHTML=RC2.map(function(d){return '<div class="cday '+d[3]+'"><span class="dw">'+d[0]+'</span><span class="dn">'+d[1]+'</span><span class="dx">'+esc(d[2])+'</span></div>'}).join("");
   /* converter */
   var usd=$("#usd"),ars=$("#ars");
   usd.addEventListener("input",function(){ars.value=Math.round((+usd.value||0)*ARS)});
