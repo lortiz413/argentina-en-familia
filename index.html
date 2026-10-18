@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Plan de viaje familiar de 15 días por Buenos Aires, Iguazú, Bariloche y Mendoza, noviembre 2027.">
 <meta property="og:title" content="Argentina en Familia 2027">
-<meta property="og:description" content="Itinerario día a día, piano bar, hotel o Airbnb, plan económico y calculadora de costos.">
+<meta property="og:description" content="Itinerario día a día, piano bar, hotel o Airbnb, plan económico y costos por persona.">
 <meta property="og:image" content="https://lortiz413.github.io/argentina-en-familia/fotos/hero.jpg">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Argentina en Familia 2027</title>
@@ -306,6 +306,8 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.6em;width:9px;heigh
 .plans button[disabled]{cursor:default;opacity:.7}
 .plans .pname{font-family:var(--display);font-weight:800;font-size:1.1rem}
 .plans .pdesc{font-size:.9rem;color:var(--muted)}
+.plans .punit{display:block;font-size:.75rem;font-weight:600;color:var(--muted);letter-spacing:0}
+.plans .palt{display:block;font-size:.78rem;font-weight:600;color:var(--muted);letter-spacing:0;margin-top:2px}
 .plans .pprice{font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-.02em}
 .cmpbars{display:grid;gap:8px;margin-bottom:34px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
 .cbar{display:grid;grid-template-columns:130px minmax(0,1fr) 92px;gap:12px;align-items:center;font-family:var(--display);font-weight:600;font-size:.88rem}
@@ -584,9 +586,10 @@ footer strong{color:var(--night-ink)}
     <div class="sec-head">
       <span class="eyebrow">Presupuesto y ahorro</span>
       <h2>Cuánto cuesta y cómo bajarlo</h2>
-      <p class="lede">Elige un plan arriba o activa los ahorros uno por uno: cada tarjeta te dice cuánto baja el total con tus viajeros y tus opciones. Montos aproximados en dólares a octubre de 2026; conviene sumar un 10 a 15% de margen.</p>
+      <p class="lede">Todo se muestra por persona (puedes cambiar a total del grupo). Elige un plan o activa los ahorros uno por uno: cada tarjeta te dice cuánto baja por persona con tus viajeros y tus opciones. Montos aproximados en dólares a octubre de 2026; conviene sumar un 10 a 15% de margen.</p>
     </div>
 
+    <div class="seg" role="group" aria-label="Ver montos" id="viewSeg" style="margin-bottom:16px"><button data-v="pp" aria-pressed="true">Por persona</button><button data-v="tot" aria-pressed="false">Total del grupo</button></div>
     <div class="plans" role="group" aria-label="Plan" id="planSeg">
       <button type="button" data-plan="full" aria-pressed="true"><span class="pname">Plan completo</span><span class="pdesc">Copa, Aerolíneas, Airbnb cómodo y excursiones</span><b class="pprice num" id="pr_full">US$ 0</b></button>
       <button type="button" data-plan="eco" aria-pressed="false"><span class="pname">Plan económico</span><span class="pdesc">Mismas 4 regiones con low cost, Airbnb sencillo y cocina en casa</span><b class="pprice num" id="pr_eco">US$ 0</b></button>
@@ -631,8 +634,8 @@ footer strong{color:var(--night-ink)}
             <div class="big num" id="total">US$ 0</div>
             <div class="saved" id="saved"></div>
             <div class="per">
-              <div><b id="pp">0</b>por persona</div>
-              <div><b id="pd">0</b>por día</div>
+              <div><b id="pp">0</b><span id="ppl">total del grupo</span></div>
+              <div><b id="pd">0</b>por persona al día</div>
               <div><b id="pluis">0</b>tu parte (Luis)</div>
             </div>
           </div>
@@ -904,7 +907,7 @@ footer strong{color:var(--night-ink)}
     $("#viewer").innerHTML='<div class="vimg"><img class="fade" src="'+x.img+'" alt="'+esc(x.t)+'"><div class="over"><span class="dd">Día '+x.n+' · '+RN[x.r]+' · '+esc(x.d)+'</span><h3>'+esc(x.t)+'</h3>'+(x.hl.length?'<div class="hl">'+x.hl.map(function(h){return "<span>★ "+esc(h)+"</span>"}).join("")+'</div>':'')+'</div></div>'+
       '<div class="vbody fade"><div class="tl"><div class="tli"><i></i><div><b>Mañana</b>'+esc(x.m)+'</div></div><div class="tli"><i></i><div><b>Tarde</b>'+esc(x.a)+'</div></div><div class="tli"><i></i><div><b>Noche</b>'+esc(x.e)+'</div></div></div>'+
       '<div class="tabs2" id="tabs2" role="tablist"><button data-p="learn" class="t-learn">Para aprender</button><button data-p="local" class="t-local">Como un local</button><button data-p="eat" class="t-eat">Para comer</button></div><div class="tabpane" id="pane"></div>'+
-      '<div class="vfoot"><span class="vcost">Entradas del día (familia de 4): <strong class="num">'+(x.c?"≈ US$ "+x.c:"sin costo")+'</strong></span><div class="navbtns"><button type="button" id="prev" aria-label="Día anterior">←</button><button type="button" id="next" aria-label="Día siguiente">→</button></div></div></div>';
+      '<div class="vfoot"><span class="vcost">Entradas del día por persona: <strong class="num">'+(x.c?"≈ US$ "+Math.round(x.c/4):"sin costo")+'</strong></span><div class="navbtns"><button type="button" id="prev" aria-label="Día anterior">←</button><button type="button" id="next" aria-label="Día siguiente">→</button></div></div></div>';
     $$("#tabs2 button").forEach(function(b){b.addEventListener("click",function(){pane=b.dataset.p;renderPane(x)})});
     renderPane(x);
     $("#prev").addEventListener("click",function(){step(-1)});$("#next").addEventListener("click",function(){step(1)});
@@ -1010,42 +1013,51 @@ footer strong{color:var(--night-ink)}
     {id:"free",t:"Paseos gratis en vez de excursiones",d:"Sin lancha Gran Aventura, catamarán a Isla Victoria ni almuerzo en bodega. En su lugar: Sendero Macuco hasta el Salto Arrechea, Cerrito Llao Llao, Playa Bonita y una bodega con degustación sencilla.",on:function(st){return !st.opts.op2&&!st.opts.op3&&!st.opts.op4&&!st.opts.op5&&!st.opts.op7},set:function(st,v){if(v){["op2","op3","op4","op5","op6","op7"].forEach(function(k){delete st.opts[k]})}else{st.opts.op2=1;st.opts.op3=1;st.opts.op4=1}}},
     {id:"noMza",t:"Tres regiones en vez de cuatro",d:"Dejar Mendoza para otro viaje: se ahorra un vuelo, dos noches, la excursión de Alta Montaña y dos días de comida. El viaje termina el jueves 18 volando de Bariloche a Buenos Aires.",on:function(st){return st.noMza},set:function(st,v){st.noMza=v}}
   ];
+  S.view="pp";
+  function V(v,st){return S.view==="pp"?v/((st||S).sju+(st||S).mcoA+(st||S).mcoK):v}
+  function unit(){return S.view==="pp"?" por persona":" en total"}
   function renderLevers(){
     var base=compute(S).tot;
-    $("#levers").innerHTML=LEVERS.map(function(L){var on=L.on(S),alt=clone(S);L.set(alt,!on);var d=compute(alt).tot-base;
-      var sv=on?(d>0?'<span class="sv">Ahorrando '+money(d)+'</span>':'<span class="sv zero">Activado</span>'):(d<0?'<span class="sv">Ahorra '+money(-d)+'</span>':'<span class="sv zero">Sin ahorro con tus opciones</span>');
+    $("#levers").innerHTML=LEVERS.map(function(L){var on=L.on(S),alt=clone(S);L.set(alt,!on);var d=V(compute(alt).tot-base);
+      var sv=on?(d>0.5?'<span class="sv">Ahorrando '+money(d)+unit()+'</span>':'<span class="sv zero">Activado</span>'):(d<-0.5?'<span class="sv">Ahorra '+money(-d)+unit()+'</span>':'<span class="sv zero">Sin ahorro con tus opciones</span>');
       return '<div class="lever'+(on?" on":"")+'" data-lv="'+L.id+'"><h4>'+esc(L.t)+'</h4><button type="button" class="switch" role="switch" aria-checked="'+on+'" aria-label="'+esc(L.t)+'"></button><p>'+esc(L.d)+'</p>'+sv+'</div>'}).join("");
     $$("#levers .lever").forEach(function(el){el.addEventListener("click",function(){var L=LEVERS.filter(function(x){return x.id===el.dataset.lv})[0];L.set(S,!L.on(S));S.plan="custom";sync()})});
   }
   function samePlan(st,pl){var P=PLANS[pl];for(var k in P){if(k==="opts"){var a=Object.keys(P.opts).sort().join(),b=Object.keys(st.opts).sort().join();if(a!==b)return false}else if(st[k]!==P[k])return false}return true}
   function renderPlans(){
-    var r={full:compute(withPlan(S,"full")).tot,eco:compute(withPlan(S,"eco")).tot,min:compute(withPlan(S,"min")).tot},cur=compute(S).tot;
-    ["full","eco","min"].forEach(function(k){$("#pr_"+k).textContent=money(r[k])});
+    var r={full:compute(withPlan(S,"full")).tot,eco:compute(withPlan(S,"eco")).tot,min:compute(withPlan(S,"min")).tot},cur=compute(S).tot,P=compute(S).P;
+    ["full","eco","min"].forEach(function(k){$("#pr_"+k).innerHTML=money(V(r[k]))+'<small class="punit">'+unit()+'</small><small class="palt">'+(S.view==="pp"?"Grupo: "+money(r[k]):"Por persona: "+money(r[k]/P))+'</small>'});
     var match=["full","eco","min"].filter(function(k){return samePlan(S,k)})[0];S.plan=match||"custom";
-    $("#pr_custom").textContent=S.plan==="custom"?money(cur):"·";
+    $("#pr_custom").innerHTML=S.plan==="custom"?money(V(cur))+'<small class="punit">'+unit()+'</small>':"·";
     $$("#planSeg button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.plan===S.plan?"true":"false")});
     var rows=[["Plan completo",r.full,"var(--andes)"],["Plan económico",r.eco,"var(--sol)"],["Súper ahorro",r.min,"var(--selva)"]];
     if(S.plan==="custom")rows.push(["A tu medida",cur,"var(--celeste)"]);
     var mx=Math.max.apply(null,rows.map(function(x){return x[1]}));
-    $("#cmpbars").innerHTML=rows.map(function(x){return '<div class="cbar"><span>'+x[0]+'</span><div class="trk"><i style="width:'+(x[1]/mx*100).toFixed(1)+'%;background:'+x[2]+'"></i></div><span class="v">'+money(x[1])+'</span></div>'}).join("")+
-      '<p class="note" style="margin-top:6px">Con '+compute(S).P+' viajeros, el plan económico ahorra '+money(r.full-r.eco)+' y el súper ahorro '+money(r.full-r.min)+' frente al plan completo.</p>';
+    $("#cmpbars").innerHTML=rows.map(function(x){return '<div class="cbar"><span>'+x[0]+'</span><div class="trk"><i style="width:'+(x[1]/mx*100).toFixed(1)+'%;background:'+x[2]+'"></i></div><span class="v">'+money(V(x[1]))+'</span></div>'}).join("")+
+      '<p class="note" style="margin-top:6px">Montos'+unit()+' con '+P+' viajeros. El plan económico ahorra '+money(V(r.full-r.eco))+' y el súper ahorro '+money(V(r.full-r.min))+unit()+' frente al plan completo.</p>';
   }
   function calc(){
-    var R=compute(S),h=HUB[S.hub],tot=R.tot,P=R.P,full=compute(withPlan(S,"full")).tot;
-    animateTo(tot);
+    var R=compute(S),h=HUB[S.hub],tot=R.tot,P=R.P,full=compute(withPlan(S,"full")).tot,pp=S.view==="pp";
+    animateTo(V(tot));
     var shared=tot-R.fSju-R.fMco,luis=R.fSju+shared*(S.sju/P);
-    $("#pp").textContent=money(tot/P);$("#pd").textContent=money(tot/R.days);$("#pluis").textContent=money(luis);
-    $("#saved").textContent=full-tot>1?"Ahorro frente al plan completo: "+money(full-tot):"";
-    $("#totalLbl").textContent="TOTAL ESTIMADO · "+P+" VIAJEROS · ENCUENTRO EN "+h.code+" · "+R.days+" DÍAS";
-    $("#lines").innerHTML=R.L.map(function(l){return '<div class="line"><span class="sw" style="background:'+l[3]+'"></span><div><div class="lbl">'+l[0]+'</div><div class="sub">'+esc(l[1])+'</div></div><div class="amt">'+money(l[2])+'</div></div>'}).join("");
+    $("#pp").textContent=pp?money(tot):money(tot/P);$("#ppl").textContent=pp?"total del grupo":"por persona";
+    $("#pd").textContent=money(tot/P/R.days);$("#pluis").textContent=money(luis/S.sju);
+    $("#saved").textContent=full-tot>1?"Ahorro frente al plan completo: "+money(V(full-tot))+unit():"";
+    $("#totalLbl").textContent=(pp?"COSTO POR PERSONA":"TOTAL DEL GRUPO")+" · "+P+" VIAJEROS · ENCUENTRO EN "+h.code+" · "+R.days+" DÍAS";
+    var L=R.L.slice();
+    if(pp){var fl=L.shift(),fm=L.shift(),A=R.A,K=R.K;
+      L.unshift(["Vuelo internacional","Luis desde San Juan "+money(h.sju.fare)+"; desde "+h.mcoCity+" "+money(h.mco.fareA)+" adulto"+(K?" y "+money(h.mco.fareK)+" niño":"")+"; aquí el promedio por persona",fl[2]+fm[2],"#3F8FD2"]);}
+    $("#lines").innerHTML=L.map(function(l){return '<div class="line"><span class="sw" style="background:'+l[3]+'"></span><div><div class="lbl">'+l[0]+'</div><div class="sub">'+esc(l[1])+'</div></div><div class="amt">'+money(V(l[2]))+'</div></div>'}).join("");
     var a0=-Math.PI/2,Rr=46,cx=60,cy=60,svg="";
-    R.L.forEach(function(l){if(l[2]<=0)return;var a1=a0+2*Math.PI*l[2]/tot,large=(a1-a0)>Math.PI?1:0;
+    L.forEach(function(l){if(l[2]<=0)return;var a1=a0+2*Math.PI*l[2]/tot,large=(a1-a0)>Math.PI?1:0;
       svg+='<path d="M'+(cx+Rr*Math.cos(a0)).toFixed(2)+','+(cy+Rr*Math.sin(a0)).toFixed(2)+' A'+Rr+','+Rr+' 0 '+large+' 1 '+(cx+Rr*Math.cos(a1)).toFixed(2)+','+(cy+Rr*Math.sin(a1)).toFixed(2)+'" fill="none" stroke="'+l[3]+'" stroke-width="16"/>';a0=a1});
     svg+='<text x="60" y="58" text-anchor="middle" font-size="15">'+P+'</text><text x="60" y="74" text-anchor="middle" font-size="9" style="fill:#9DB0C5;font-family:IBM Plex Mono,monospace;font-weight:500">viajeros</text>';
     $("#donut").innerHTML=svg;
-    $("#arsNote").textContent="En pesos, al cambio de referencia US$1 = AR$1,450, el total ronda AR$ "+Math.round(tot*ARS).toLocaleString("en-US")+". Las tarifas de Arajet, JetSMART y Flybondi son de promociones vistas en octubre de 2026 para noviembre de 2026; para 2027 hay que cazarlas con alertas.";
+    $("#arsNote").textContent="En pesos, al cambio de referencia US$1 = AR$1,450, son unos AR$ "+Math.round(V(tot)*ARS).toLocaleString("en-US")+unit()+". Los niños gastan menos en comida y algunas entradas, así que un adulto paga un poco más que el promedio y un niño un poco menos. Las tarifas de Arajet, JetSMART y Flybondi son promociones vistas en octubre de 2026 para noviembre de 2026; para 2027 hay que cazarlas con alertas.";
+    $$("#viewSeg button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===S.view?"true":"false")});
     renderPlans();renderLevers();
   }
+  $$("#viewSeg button").forEach(function(b){b.addEventListener("click",function(){S.view=b.dataset.v;shown=V(compute(S).tot);calc()})});
 
   /* bind controls */
   function sync(){
