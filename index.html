@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Plan de viaje familiar de 15 días por Buenos Aires, Iguazú, Bariloche y Mendoza, noviembre 2027.">
 <meta property="og:title" content="Argentina en Familia 2027">
-<meta property="og:description" content="Itinerario día a día, piano bar, hotel o Airbnb y calculadora de costos.">
+<meta property="og:description" content="Itinerario día a día, piano bar, hotel o Airbnb, plan económico y calculadora de costos.">
 <meta property="og:image" content="https://lortiz413.github.io/argentina-en-familia/fotos/hero.jpg">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Argentina en Familia 2027</title>
@@ -298,6 +298,40 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.6em;width:9px;heigh
 .line .amt{font-family:var(--display);font-weight:800;text-align:right;font-variant-numeric:tabular-nums}
 .note{font-size:.9rem;color:var(--muted)}
 
+/* plans + levers */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin-bottom:18px}
+.plans button{display:grid;gap:6px;text-align:left;padding:18px;border-radius:18px;border:2px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;transition:border-color .2s,transform .2s,background .2s}
+.plans button:hover:not([disabled]){transform:translateY(-2px);border-color:var(--celeste)}
+.plans button[aria-pressed="true"]{border-color:var(--sol);background:var(--sol-soft)}
+.plans button[disabled]{cursor:default;opacity:.7}
+.plans .pname{font-family:var(--display);font-weight:800;font-size:1.1rem}
+.plans .pdesc{font-size:.9rem;color:var(--muted)}
+.plans .pprice{font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-.02em}
+.cmpbars{display:grid;gap:8px;margin-bottom:34px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
+.cbar{display:grid;grid-template-columns:130px minmax(0,1fr) 92px;gap:12px;align-items:center;font-family:var(--display);font-weight:600;font-size:.88rem}
+@media (max-width:560px){.cbar{grid-template-columns:96px minmax(0,1fr) 78px;font-size:.8rem}}
+.cbar .trk{height:16px;border-radius:999px;background:var(--surface2);overflow:hidden}
+.cbar .trk i{display:block;height:100%;border-radius:999px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.cbar .v{text-align:right;font-weight:800;font-variant-numeric:tabular-nums}
+.lvtitle{font-size:1.4rem;margin-bottom:14px}
+.levers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.lever{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 14px;align-items:start;cursor:pointer;transition:border-color .2s,background .2s}
+.lever.on{border-color:var(--selva);background:var(--selva-soft)}
+.lever h4{font-family:var(--display);font-weight:800;font-size:1.02rem}
+.lever p{grid-column:1/-1;font-size:.94rem;color:var(--muted)}
+.lever .sv{grid-column:1/-1;font-family:var(--display);font-weight:800;font-size:1.05rem;color:var(--selva)}
+.lever .sv.zero{color:var(--muted);font-weight:600;font-size:.9rem}
+.switch{width:48px;height:28px;border-radius:999px;background:var(--line);position:relative;flex:none;transition:background .2s;border:none;padding:0;cursor:pointer}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s}
+.switch[aria-checked="true"]{background:var(--selva)}
+.switch[aria-checked="true"]::after{transform:translateX(20px)}
+.saved{font-family:var(--display);font-weight:700;color:var(--sol);margin-top:6px;font-size:.95rem;min-height:1.2em}
+.tricks{margin-top:40px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:12px}
+.trick{background:var(--surface2);border-radius:14px;padding:16px}
+.trick b{font-family:var(--display);font-weight:800;display:block;margin-bottom:6px}
+.trick p{font-size:.94rem;color:var(--muted)}
+
 /* tools */
 .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px}
 .conv{display:grid;gap:12px}
@@ -340,7 +374,7 @@ footer strong{color:var(--night-ink)}
 <nav class="nav" aria-label="Secciones">
   <div class="wrap">
     <div class="brand"><svg class="sun" viewBox="0 0 40 40" aria-hidden="true"><g fill="#E3A91B"><circle cx="20" cy="20" r="8"/><g id="ray"><rect x="19" y="1" width="2" height="8" rx="1"/></g><use href="#ray" transform="rotate(45 20 20)"/><use href="#ray" transform="rotate(90 20 20)"/><use href="#ray" transform="rotate(135 20 20)"/><use href="#ray" transform="rotate(180 20 20)"/><use href="#ray" transform="rotate(225 20 20)"/><use href="#ray" transform="rotate(270 20 20)"/><use href="#ray" transform="rotate(315 20 20)"/></g></svg>Argentina en familia</div>
-    <a href="#llegada">Cómo llegamos</a><a href="#mapa">La ruta</a><a href="#dias">Día a día</a><a href="#piano">Piano bar</a><a href="#estadias">Estadías</a><a href="#comer">Comer</a><a href="#costos">Costos</a><a href="#herramientas">Herramientas</a>
+    <a href="#llegada">Cómo llegamos</a><a href="#mapa">La ruta</a><a href="#dias">Día a día</a><a href="#piano">Piano bar</a><a href="#estadias">Estadías</a><a href="#comer">Comer</a><a href="#costos">Costos y ahorro</a><a href="#herramientas">Herramientas</a>
   </div>
 </nav>
 
@@ -382,6 +416,7 @@ footer strong{color:var(--night-ink)}
     <div class="row" style="margin-bottom:20px">
       <div class="seg" role="group" aria-label="Punto de encuentro" id="hubSeg">
         <button data-hub="pty" aria-pressed="true">Encuentro en Panamá</button>
+        <button data-hub="sdq" aria-pressed="false">Encuentro en Santo Domingo</button>
         <button data-hub="mia" aria-pressed="false">Encuentro en Miami</button>
       </div>
     </div>
@@ -391,7 +426,7 @@ footer strong{color:var(--night-ink)}
         <path class="fl" d="M70,48 Q120,110 200,118" stroke="var(--rosa)"/>
         <path class="fl" d="M330,48 Q280,110 200,118" stroke="var(--celeste)"/>
         <path class="fl" d="M200,118 L200,192" stroke="var(--sol)" style="stroke-width:4"/>
-        <g><circle cx="70" cy="40" r="7" fill="var(--rosa)"/><text x="70" y="24" text-anchor="middle" font-size="15">MCO</text><text class="small" x="70" y="62" text-anchor="middle">Familia · Orlando</text></g>
+        <g><circle cx="70" cy="40" r="7" fill="var(--rosa)"/><text id="famCode" x="70" y="24" text-anchor="middle" font-size="15">MCO</text><text class="small" x="70" y="62" text-anchor="middle">Familia · Orlando</text></g>
         <g><circle cx="330" cy="40" r="7" fill="var(--celeste)"/><text x="330" y="24" text-anchor="middle" font-size="15">SJU</text><text class="small" x="330" y="62" text-anchor="middle">Luis · San Juan</text></g>
         <g><circle cx="200" cy="118" r="10" fill="var(--sol)"/><text id="hubCode" x="222" y="114" font-size="15">PTY</text><text class="small" id="hubName" x="222" y="128">Tocumen, Panamá</text></g>
         <g><circle cx="200" cy="200" r="8" fill="var(--ink)"/><text x="222" y="198" font-size="15">EZE</text><text class="small" x="222" y="212">Buenos Aires · juntos</text></g>
@@ -547,11 +582,24 @@ footer strong{color:var(--night-ink)}
 <section id="costos">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Presupuesto</span>
-      <h2>Cuánto cuesta todo</h2>
-      <p class="lede">Ajusta cuántos salen desde San Juan y cuántos desde Orlando, el punto de encuentro, el tipo de alojamiento y las actividades. Montos aproximados en dólares a octubre de 2026; conviene sumar un 10 a 15% de margen.</p>
+      <span class="eyebrow">Presupuesto y ahorro</span>
+      <h2>Cuánto cuesta y cómo bajarlo</h2>
+      <p class="lede">Elige un plan arriba o activa los ahorros uno por uno: cada tarjeta te dice cuánto baja el total con tus viajeros y tus opciones. Montos aproximados en dólares a octubre de 2026; conviene sumar un 10 a 15% de margen.</p>
     </div>
-    <div class="calc">
+
+    <div class="plans" role="group" aria-label="Plan" id="planSeg">
+      <button type="button" data-plan="full" aria-pressed="true"><span class="pname">Plan completo</span><span class="pdesc">Copa, Aerolíneas, Airbnb cómodo y excursiones</span><b class="pprice num" id="pr_full">US$ 0</b></button>
+      <button type="button" data-plan="eco" aria-pressed="false"><span class="pname">Plan económico</span><span class="pdesc">Mismas 4 regiones con low cost, Airbnb sencillo y cocina en casa</span><b class="pprice num" id="pr_eco">US$ 0</b></button>
+      <button type="button" data-plan="min" aria-pressed="false"><span class="pname">Súper ahorro</span><span class="pdesc">Lo anterior sin Mendoza: 3 regiones y 2 días menos</span><b class="pprice num" id="pr_min">US$ 0</b></button>
+      <button type="button" data-plan="custom" aria-pressed="false" disabled><span class="pname">A tu medida</span><span class="pdesc">Se activa cuando cambias cualquier opción</span><b class="pprice num" id="pr_custom">·</b></button>
+    </div>
+
+    <div class="cmpbars" id="cmpbars" aria-label="Comparación de planes"></div>
+
+    <h3 class="lvtitle">Formas de ahorrar</h3>
+    <div class="levers" id="levers"></div>
+
+    <div class="calc" style="margin-top:34px">
       <div class="card ctrl">
         <div class="field">
           <span class="flabel">Viajeros</span>
@@ -562,14 +610,14 @@ footer strong{color:var(--night-ink)}
           </div>
           <span class="note">Ejemplo con tu familia de 3 en Orlando; cámbialo a la cantidad real.</span>
         </div>
-        <div class="field"><span class="flabel">Punto de encuentro</span><div class="seg" id="hubSeg2"><button data-hub="pty" aria-pressed="true">Panamá</button><button data-hub="mia" aria-pressed="false">Miami</button></div></div>
+        <div class="field"><span class="flabel">Punto de encuentro</span><div class="seg" id="hubSeg2"><button data-hub="pty" aria-pressed="true">Panamá</button><button data-hub="sdq" aria-pressed="false">Santo Domingo</button><button data-hub="mia" aria-pressed="false">Miami</button></div></div>
         <div class="field"><span class="flabel">Alojamiento</span><div class="seg" id="lodgeSeg2"><button data-l="hotel" aria-pressed="false">Hotel</button><button data-l="airbnb" aria-pressed="true">Airbnb</button></div><div class="seg" id="tierSeg2"><button data-t="eco" aria-pressed="false">Económico</button><button data-t="mid" aria-pressed="true">Cómodo</button><button data-t="lux" aria-pressed="false">Premium</button></div></div>
         <div class="field"><span class="flabel">Actividades opcionales (adulto / niño)</span>
           <div class="checks" id="opts">
-            <label><input type="checkbox" id="op1" data-a="35" data-k="10" checked><span>Noche de piano bar (consumo)</span><span class="p">35 / 10</span></label>
-            <label><input type="checkbox" id="op2" data-a="70" data-k="55" checked><span>Gran Aventura bajo las cataratas</span><span class="p">70 / 55</span></label>
-            <label><input type="checkbox" id="op3" data-a="75" data-k="55" checked><span>Isla Victoria y Bosque de Arrayanes</span><span class="p">75 / 55</span></label>
-            <label><input type="checkbox" id="op4" data-a="60" data-k="25" checked><span>Almuerzo en bodega de Luján de Cuyo</span><span class="p">60 / 25</span></label>
+            <label><input type="checkbox" id="op1" data-a="35" data-k="10"><span>Noche de piano bar (consumo)</span><span class="p">35 / 10</span></label>
+            <label><input type="checkbox" id="op2" data-a="70" data-k="55"><span>Gran Aventura bajo las cataratas</span><span class="p">70 / 55</span></label>
+            <label><input type="checkbox" id="op3" data-a="75" data-k="55"><span>Isla Victoria y Bosque de Arrayanes</span><span class="p">75 / 55</span></label>
+            <label><input type="checkbox" id="op4" data-a="60" data-k="25"><span>Almuerzo en bodega de Luján de Cuyo</span><span class="p">60 / 25</span></label>
             <label><input type="checkbox" id="op5" data-a="90" data-k="60"><span>Cena show de tango</span><span class="p">90 / 60</span></label>
             <label><input type="checkbox" id="op6" data-a="25" data-k="15"><span>Tour del estadio La Bombonera</span><span class="p">25 / 15</span></label>
             <label><input type="checkbox" id="op7" data-a="105" data-k="90"><span>Lado brasileño de las cataratas (visa electrónica)</span><span class="p">105 / 90</span></label>
@@ -581,6 +629,7 @@ footer strong{color:var(--night-ink)}
           <div>
             <small id="totalLbl">TOTAL ESTIMADO</small>
             <div class="big num" id="total">US$ 0</div>
+            <div class="saved" id="saved"></div>
             <div class="per">
               <div><b id="pp">0</b>por persona</div>
               <div><b id="pd">0</b>por día</div>
@@ -591,6 +640,20 @@ footer strong{color:var(--night-ink)}
         </div>
         <div class="lines" id="lines"></div>
         <p class="note" id="arsNote"></p>
+      </div>
+    </div>
+
+    <div class="tricks">
+      <h3 class="lvtitle">Más trucos que no cuestan nada</h3>
+      <div class="tgrid">
+        <div class="trick"><b>Alertas de precio</b><p>Pon alertas en Google Flights para SJU y MCO a Buenos Aires desde ahora. Copa y Arajet sacan promociones de Sudamérica varias veces al año; noviembre 2027 se debe comprar entre abril y julio.</p></div>
+        <div class="trick"><b>Pagar con tarjeta de EE. UU.</b><p>Las compras con tarjeta extranjera se liquidan al cambio de mercado, y en hoteles quedan exentas del IVA de 21% si pides factura B.</p></div>
+        <div class="trick"><b>Menú del día al mediodía</b><p>Muchos bodegones ofrecen plato, bebida y postre por US$8 a 12. Comer fuerte al mediodía y cenar liviano en casa baja mucho la cuenta.</p></div>
+        <div class="trick"><b>Asado en el Airbnb</b><p>Un kilo de vacío o entraña en la carnicería cuesta mucho menos que en una parrilla. Busquen Airbnb con parrilla y hagan una noche de asado en familia.</p></div>
+        <div class="trick"><b>Segundo día en Iguazú a mitad de precio</b><p>Guardando la entrada del primer día, el segundo día consecutivo cuesta 50%. Menores de 6 años no pagan entrada al parque.</p></div>
+        <div class="trick"><b>Gratis en Buenos Aires</b><p>Museo Nacional de Bellas Artes, el Rosedal, la Reserva Ecológica, Caminito, el Cementerio de la Recoleta y el Hito Tres Fronteras en Iguazú no cobran entrada.</p></div>
+        <div class="trick"><b>Colectivo en Bariloche</b><p>La línea 20 llega al Llao Llao, Puerto Pañuelo y la base del Cerro Campanario; la 55 al Cerro Catedral. Con tarjeta SUBE cuesta una fracción de un taxi.</p></div>
+        <div class="trick"><b>Equipaje de mano</b><p>En JetSMART, Flybondi y Arajet el pasaje base no incluye maleta. Viajando livianos y compartiendo una maleta cada dos personas, el ahorro se mantiene.</p></div>
       </div>
     </div>
   </div>
@@ -719,9 +782,11 @@ footer strong{color:var(--night-ink)}
 
   /* passes */
   var HUB={
-    pty:{code:"PTY",name:"Tocumen, Panamá",air:"Copa Airlines",sju:{t:"3 h",lay:"2 a 4 h",tot:"13 a 15 h",fare:750},mco:{t:"3 h 15",lay:"2 a 4 h",tot:"13 a 15 h",fareA:790,fareK:720},
+    pty:{code:"PTY",name:"Tocumen, Panamá",air:"Copa Airlines",mcoCode:"MCO",mcoCity:"Orlando",sju:{t:"3 h",lay:"2 a 4 h",tot:"13 a 15 h",fare:750},mco:{t:"3 h 15",lay:"2 a 4 h",tot:"13 a 15 h",fareA:790,fareK:720},
       copy:["<strong>La opción recomendada.</strong> Copa tiene vuelos desde San Juan y desde Orlando que llegan a Panamá por la tarde, y de ahí sale el vuelo nocturno a Ezeiza. Se reserva cada boleto por separado pero eligiendo el mismo vuelo de Panamá a Buenos Aires.","Tú llegas a Tocumen, ellos llegan a Tocumen, y se encuentran en la puerta de embarque. Al regreso es igual al revés: vuelven juntos hasta Panamá y ahí cada uno toma su conexión a casa.","Tarifas publicadas por Copa: Orlando a Buenos Aires desde US$738 y San Juan a Buenos Aires desde US$616 ida y vuelta. Para noviembre de 2027 conviene comprar entre 4 y 7 meses antes."]},
-    mia:{code:"MIA",name:"Miami",air:"American o Aerolíneas Argentinas",sju:{t:"2 h 45",lay:"3 a 5 h",tot:"12 a 14 h",fare:1050},mco:{t:"1 h o manejando 3 h 30",lay:"3 a 5 h",tot:"10 a 12 h",fareA:960,fareK:900},
+    sdq:{code:"SDQ",name:"Santo Domingo",air:"Arajet",mcoCode:"SFB",mcoCity:"Orlando Sanford",sju:{t:"1 h 45",lay:"2 a 6 h",tot:"12 a 15 h",fare:560},mco:{t:"2 h 30",lay:"2 a 6 h",tot:"13 a 16 h",fareA:700,fareK:680},
+      copy:["<strong>La opción más barata.</strong> Arajet, la low cost dominicana, vuela desde San Juan y desde Orlando Sanford (SFB, a 40 minutos de Orlando) a Santo Domingo, y de ahí a Buenos Aires. En octubre de 2026 publicaba Santo Domingo a Buenos Aires desde US$251 por tramo y Orlando a Santo Domingo desde US$154.","Se encuentran en el aeropuerto Las Américas y vuelan juntos. Ojo: la tarifa base solo incluye un bolso pequeño; la maleta se paga aparte, así que conviene llevar una por cada dos personas.","Arajet saca promociones a Argentina varias veces al año. Pon alertas desde ya y compra apenas aparezca una tarifa por debajo de US$600 ida y vuelta."]},
+    mia:{code:"MIA",name:"Miami",air:"American o Aerolíneas Argentinas",mcoCode:"MCO",mcoCity:"Orlando",sju:{t:"2 h 45",lay:"3 a 5 h",tot:"12 a 14 h",fare:1050},mco:{t:"1 h o manejando 3 h 30",lay:"3 a 5 h",tot:"10 a 12 h",fareA:960,fareK:900},
       copy:["<strong>La alternativa.</strong> Aerolíneas Argentinas y American tienen vuelos directos de Miami a Ezeiza (unas 9 horas). La familia puede volar o manejar desde Orlando a Miami y tú volás desde San Juan.","Es un vuelo directo más largo pero sin escala en Sudamérica. Suele salir más caro para ti, porque San Juan a Miami se paga aparte.","Útil si encuentran oferta en Aerolíneas Argentinas o si la familia prefiere manejar hasta Miami y ahorrarse el primer vuelo."]}
   };
   function renderPasses(){
@@ -733,8 +798,8 @@ footer strong{color:var(--night-ink)}
       '<div class="stub"><span>SALIDA</span><b>6 NOV</b><span>REGRESO</span><b>20 NOV</b><span style="width:46px;height:46px;border-radius:6px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px)" aria-hidden="true"></span><span>'+n+'</span></div></article>';
     }
     var fam=S.mcoA+S.mcoK;
-    $("#passes").innerHTML=pass("Pasajero · Luis",h.air,"SJU","San Juan, PR",h.sju,"var(--celeste)","1 PAX")+pass("Pasajeros · La familia",h.air,"MCO","Orlando, FL",h.mco,"var(--rosa)",fam+" PAX");
-    $("#hubCode").textContent=h.code;$("#hubName").textContent=h.name;
+    $("#passes").innerHTML=pass("Pasajero · Luis",h.air,"SJU","San Juan, PR",h.sju,"var(--celeste)","1 PAX")+pass("Pasajeros · La familia",h.air,h.mcoCode,h.mcoCode==="SFB"?"Orlando Sanford, FL":"Orlando, FL",h.mco,"var(--rosa)",fam+" PAX");
+    $("#hubCode").textContent=h.code;$("#famCode").textContent=h.mcoCode;$("#hubName").textContent=h.name;
     $("#meetCopy").innerHTML='<div class="card fade">'+h.copy.map(function(p){return "<p>"+p+"</p>"}).join("")+'</div>';
   }
 
@@ -896,41 +961,90 @@ footer strong{color:var(--night-ink)}
 
   /* calculator */
   var FOOD={eco:22,mid:38,lux:65},FIX_A=274,FIX_K=186,ARS=1450,shown=0;
-  function animateTo(v){var start=shown,t0=null,dur=reduce?0:700;
-    function f(t){if(!t0)t0=t;var p=dur?Math.min(1,(t-t0)/dur):1,e=1-Math.pow(1-p,3),val=start+(v-start)*e;$("#total").textContent=money(val);if(p<1)requestAnimationFrame(f);else shown=v}
-    requestAnimationFrame(f)}
-  function lodging(){var s=0;Object.keys(ST).forEach(function(k){s+=ST[k][S.lodge][S.tier].p*roomMult()*ST[k].n+(S.lodge==="airbnb"?35:0)});return s}
-  function calc(){
-    var A=S.sju+S.mcoA,K=S.mcoK,P=A+K,h=HUB[S.hub];
-    var fSju=h.sju.fare*S.sju,fMco=h.mco.fareA*S.mcoA+h.mco.fareK*K;
-    var dom=650*A+600*K,lod=lodging();
-    var food=FOOD[S.tier]*14*(A+.7*K)*(S.lodge==="airbnb"?.88:1);
-    var act=FIX_A*A+FIX_K*K,opt=0;$$("#opts input:checked").forEach(function(i){opt+=Number(i.dataset.a)*A+Number(i.dataset.k)*K});
-    var trans=300+40*P,ins=45*P,extra=400+50*P;
-    var L=[["Vuelo de Luis","San Juan a "+h.name+" a Buenos Aires, ida y vuelta",fSju,"#3F8FD2"],
-      ["Vuelos de la familia","Orlando a "+h.name+" a Buenos Aires: "+S.mcoA+" adulto"+(S.mcoA!==1?"s":"")+(K?" y "+K+" niño"+(K!==1?"s":""):""),fMco,"#C4567F"],
-      ["Vuelos internos","4 tramos dentro de Argentina con Aerolíneas",dom,"#2F6FA8"],
-      ["Alojamiento",(S.lodge==="airbnb"?"Airbnb":"Hotel")+", nivel "+({eco:"económico",mid:"cómodo",lux:"premium"})[S.tier]+", 14 noches"+(S.lodge==="airbnb"?", con limpieza":""),lod,"#B4572C"],
-      ["Comida","US$"+FOOD[S.tier]+" por adulto al día, niños al 70%"+(S.lodge==="airbnb"?", desayunos en casa":""),food,"#2B8A57"],
-      ["Entradas fijas","Iguazú, Obelisco, Colón, Barolo, Campanario, Tigre, Alta Montaña y más",act,"#E3A91B"],
-      ["Actividades opcionales","Las marcadas a la izquierda",opt,"#8E6BC4"],
-      ["Transporte local","Transfers, Uber, SUBE y auto 2 días en Bariloche",trans,"#7A8A9C"],
+  S.lowcost=false;S.cook=false;S.publicT=false;S.noMza=false;S.opts={op1:1,op2:1,op3:1,op4:1};S.plan="full";
+  var PLANS={
+    full:{hub:"pty",lodge:"airbnb",tier:"mid",lowcost:false,cook:false,publicT:false,noMza:false,opts:{op1:1,op2:1,op3:1,op4:1}},
+    eco:{hub:"sdq",lodge:"airbnb",tier:"eco",lowcost:true,cook:true,publicT:true,noMza:false,opts:{op1:1}},
+    min:{hub:"sdq",lodge:"airbnb",tier:"eco",lowcost:true,cook:true,publicT:true,noMza:true,opts:{op1:1}}
+  };
+  function clone(o){var r={};for(var k in o){r[k]=(o[k]&&typeof o[k]==="object")?clone(o[k]):o[k]}return r}
+  function withPlan(st,pl){var r=clone(st),P=PLANS[pl];for(var k in P)r[k]=(typeof P[k]==="object")?clone(P[k]):P[k];return r}
+  function optList(){return $$("#opts input").map(function(i){return {id:i.id,a:+i.dataset.a,k:+i.dataset.k,lbl:i.parentNode.querySelector("span").textContent}})}
+  var OPTS=optList();
+  function compute(st){
+    var A=st.sju+st.mcoA,K=st.mcoK,P=A+K,h=HUB[st.hub];
+    var mult=P>4?(st.lodge==="hotel"?1.5:1.25):1;
+    var fSju=h.sju.fare*st.sju,fMco=h.mco.fareA*st.mcoA+h.mco.fareK*K;
+    var legs=st.noMza?3:4;
+    var dom=st.lowcost?82*legs*P:(650*A+600*K)*legs/4;
+    var cities=st.noMza?["ba","ig","br"]:["ba","ig","br","mz"],nights=0,lod=0;
+    cities.forEach(function(k){nights+=ST[k].n;lod+=ST[k][st.lodge][st.tier].p*mult*ST[k].n+(st.lodge==="airbnb"?35:0)});
+    var days=st.noMza?12:14;
+    var food=FOOD[st.tier]*days*(A+.7*K)*(st.lodge==="airbnb"?.88:1)*(st.cook?.72:1);
+    var act=st.noMza?(FIX_A-70)*A+(FIX_K-50)*K:FIX_A*A+FIX_K*K;
+    var opt=0;OPTS.forEach(function(o){if(st.opts[o.id]&&!(st.noMza&&o.id==="op4"))opt+=o.a*A+o.k*K});
+    var trans=st.publicT?120+20*P:300+40*P,ins=45*P,extra=st.cook?300+40*P:400+50*P;
+    var L=[["Vuelo de Luis","San Juan a "+h.name+" a Buenos Aires, ida y vuelta con "+h.air,fSju,"#3F8FD2"],
+      ["Vuelos de la familia",h.mcoCity+" a "+h.name+" a Buenos Aires: "+st.mcoA+" adulto"+(st.mcoA!==1?"s":"")+(K?" y "+K+" niño"+(K!==1?"s":""):""),fMco,"#C4567F"],
+      ["Vuelos internos",legs+" tramos "+(st.lowcost?"en JetSMART o Flybondi con maleta compartida":"con Aerolíneas Argentinas"),dom,"#2F6FA8"],
+      ["Alojamiento",(st.lodge==="airbnb"?"Airbnb":"Hotel")+", nivel "+({eco:"económico",mid:"cómodo",lux:"premium"})[st.tier]+", "+nights+" noches"+(st.lodge==="airbnb"?", con limpieza":""),lod,"#B4572C"],
+      ["Comida","US$"+FOOD[st.tier]+" por adulto al día, niños al 70%"+(st.cook?", cocinando desayunos y la mitad de las cenas":(st.lodge==="airbnb"?", desayunos en casa":"")),food,"#2B8A57"],
+      ["Entradas fijas","Iguazú, Obelisco, Colón, Barolo, Campanario, Tigre"+(st.noMza?"":", Alta Montaña")+" y más",act,"#E3A91B"],
+      ["Actividades opcionales",opt?"Las marcadas en la lista":"Ninguna marcada",opt,"#8E6BC4"],
+      ["Transporte local",st.publicT?"Colectivo, SUBE y bus al parque de Iguazú, sin auto":"Transfers, Uber, SUBE y auto 2 días en Bariloche",trans,"#7A8A9C"],
       ["Seguro de viaje","US$45 por persona",ins,"#5CA9A3"],
       ["Imprevistos y recuerdos","Chocolate, vino, mates, propinas y margen",extra,"#B49A5C"]];
     var tot=L.reduce(function(s,l){return s+l[2]},0);
+    return {tot:tot,L:L,A:A,K:K,P:P,fSju:fSju,fMco:fMco,days:days+1};
+  }
+  function animateTo(v){var start=shown,t0=null,dur=reduce?0:700;
+    function f(t){if(!t0)t0=t;var p=dur?Math.min(1,(t-t0)/dur):1,e=1-Math.pow(1-p,3),val=start+(v-start)*e;$("#total").textContent=money(val);if(p<1)requestAnimationFrame(f);else shown=v}
+    requestAnimationFrame(f)}
+
+  var LEVERS=[
+    {id:"lowcost",t:"Vuelos internos low cost",d:"JetSMART y Flybondi vuelan Buenos Aires a Iguazú desde US$36 y a Bariloche desde US$54; Bariloche a Mendoza desde US$79. Viajar con equipaje de mano y una maleta cada dos.",on:function(st){return st.lowcost},set:function(st,v){st.lowcost=v}},
+    {id:"sdq",t:"Arajet vía Santo Domingo",d:"Arajet vuela de San Juan y de Orlando (Sanford) a Santo Domingo, y de ahí a Buenos Aires desde US$251 por tramo. Se encuentran en Las Américas en vez de Panamá.",on:function(st){return st.hub==="sdq"},set:function(st,v){st.hub=v?"sdq":"pty"}},
+    {id:"abeco",t:"Airbnb económico",d:"Departamento en Villa Crespo, casa con piscina en Puerto Iguazú, departamento en Melipal y en la 5ta Sección de Mendoza. Mismas zonas seguras, menos lujo.",on:function(st){return st.lodge==="airbnb"&&st.tier==="eco"},set:function(st,v){st.lodge="airbnb";st.tier=v?"eco":"mid"}},
+    {id:"cook",t:"Cocinar en casa",d:"Desayunos y la mitad de las cenas en el Airbnb, menú del día al mediodía y una noche de asado propio. Las carnicerías y verdulerías argentinas son baratas y buenísimas.",on:function(st){return st.cook},set:function(st,v){st.cook=v}},
+    {id:"publicT",t:"Transporte público",d:"Colectivo 20 al Llao Llao y al Campanario, bus de línea al Parque Iguazú y subte en Buenos Aires. Sin alquilar auto y con menos Uber.",on:function(st){return st.publicT},set:function(st,v){st.publicT=v}},
+    {id:"free",t:"Paseos gratis en vez de excursiones",d:"Sin lancha Gran Aventura, catamarán a Isla Victoria ni almuerzo en bodega. En su lugar: Sendero Macuco hasta el Salto Arrechea, Cerrito Llao Llao, Playa Bonita y una bodega con degustación sencilla.",on:function(st){return !st.opts.op2&&!st.opts.op3&&!st.opts.op4&&!st.opts.op5&&!st.opts.op7},set:function(st,v){if(v){["op2","op3","op4","op5","op6","op7"].forEach(function(k){delete st.opts[k]})}else{st.opts.op2=1;st.opts.op3=1;st.opts.op4=1}}},
+    {id:"noMza",t:"Tres regiones en vez de cuatro",d:"Dejar Mendoza para otro viaje: se ahorra un vuelo, dos noches, la excursión de Alta Montaña y dos días de comida. El viaje termina el jueves 18 volando de Bariloche a Buenos Aires.",on:function(st){return st.noMza},set:function(st,v){st.noMza=v}}
+  ];
+  function renderLevers(){
+    var base=compute(S).tot;
+    $("#levers").innerHTML=LEVERS.map(function(L){var on=L.on(S),alt=clone(S);L.set(alt,!on);var d=compute(alt).tot-base;
+      var sv=on?(d>0?'<span class="sv">Ahorrando '+money(d)+'</span>':'<span class="sv zero">Activado</span>'):(d<0?'<span class="sv">Ahorra '+money(-d)+'</span>':'<span class="sv zero">Sin ahorro con tus opciones</span>');
+      return '<div class="lever'+(on?" on":"")+'" data-lv="'+L.id+'"><h4>'+esc(L.t)+'</h4><button type="button" class="switch" role="switch" aria-checked="'+on+'" aria-label="'+esc(L.t)+'"></button><p>'+esc(L.d)+'</p>'+sv+'</div>'}).join("");
+    $$("#levers .lever").forEach(function(el){el.addEventListener("click",function(){var L=LEVERS.filter(function(x){return x.id===el.dataset.lv})[0];L.set(S,!L.on(S));S.plan="custom";sync()})});
+  }
+  function samePlan(st,pl){var P=PLANS[pl];for(var k in P){if(k==="opts"){var a=Object.keys(P.opts).sort().join(),b=Object.keys(st.opts).sort().join();if(a!==b)return false}else if(st[k]!==P[k])return false}return true}
+  function renderPlans(){
+    var r={full:compute(withPlan(S,"full")).tot,eco:compute(withPlan(S,"eco")).tot,min:compute(withPlan(S,"min")).tot},cur=compute(S).tot;
+    ["full","eco","min"].forEach(function(k){$("#pr_"+k).textContent=money(r[k])});
+    var match=["full","eco","min"].filter(function(k){return samePlan(S,k)})[0];S.plan=match||"custom";
+    $("#pr_custom").textContent=S.plan==="custom"?money(cur):"·";
+    $$("#planSeg button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.plan===S.plan?"true":"false")});
+    var rows=[["Plan completo",r.full,"var(--andes)"],["Plan económico",r.eco,"var(--sol)"],["Súper ahorro",r.min,"var(--selva)"]];
+    if(S.plan==="custom")rows.push(["A tu medida",cur,"var(--celeste)"]);
+    var mx=Math.max.apply(null,rows.map(function(x){return x[1]}));
+    $("#cmpbars").innerHTML=rows.map(function(x){return '<div class="cbar"><span>'+x[0]+'</span><div class="trk"><i style="width:'+(x[1]/mx*100).toFixed(1)+'%;background:'+x[2]+'"></i></div><span class="v">'+money(x[1])+'</span></div>'}).join("")+
+      '<p class="note" style="margin-top:6px">Con '+compute(S).P+' viajeros, el plan económico ahorra '+money(r.full-r.eco)+' y el súper ahorro '+money(r.full-r.min)+' frente al plan completo.</p>';
+  }
+  function calc(){
+    var R=compute(S),h=HUB[S.hub],tot=R.tot,P=R.P,full=compute(withPlan(S,"full")).tot;
     animateTo(tot);
-    var shared=tot-fSju-fMco,luis=fSju+shared*(S.sju/P);
-    $("#pp").textContent=money(tot/P);$("#pd").textContent=money(tot/15);$("#pluis").textContent=money(luis);
-    $("#totalLbl").textContent="TOTAL ESTIMADO · "+P+" VIAJEROS · ENCUENTRO EN "+h.code;
-    $("#lines").innerHTML=L.map(function(l){return '<div class="line"><span class="sw" style="background:'+l[3]+'"></span><div><div class="lbl">'+l[0]+'</div><div class="sub">'+esc(l[1])+'</div></div><div class="amt">'+money(l[2])+'</div></div>'}).join("");
-    var a0=-Math.PI/2,R=46,cx=60,cy=60,svg="";
-    L.forEach(function(l){if(l[2]<=0)return;var a1=a0+2*Math.PI*l[2]/tot,large=(a1-a0)>Math.PI?1:0;
-      svg+='<path d="M'+(cx+R*Math.cos(a0)).toFixed(2)+','+(cy+R*Math.sin(a0)).toFixed(2)+' A'+R+','+R+' 0 '+large+' 1 '+(cx+R*Math.cos(a1)).toFixed(2)+','+(cy+R*Math.sin(a1)).toFixed(2)+'" fill="none" stroke="'+l[3]+'" stroke-width="16"/>';a0=a1});
+    var shared=tot-R.fSju-R.fMco,luis=R.fSju+shared*(S.sju/P);
+    $("#pp").textContent=money(tot/P);$("#pd").textContent=money(tot/R.days);$("#pluis").textContent=money(luis);
+    $("#saved").textContent=full-tot>1?"Ahorro frente al plan completo: "+money(full-tot):"";
+    $("#totalLbl").textContent="TOTAL ESTIMADO · "+P+" VIAJEROS · ENCUENTRO EN "+h.code+" · "+R.days+" DÍAS";
+    $("#lines").innerHTML=R.L.map(function(l){return '<div class="line"><span class="sw" style="background:'+l[3]+'"></span><div><div class="lbl">'+l[0]+'</div><div class="sub">'+esc(l[1])+'</div></div><div class="amt">'+money(l[2])+'</div></div>'}).join("");
+    var a0=-Math.PI/2,Rr=46,cx=60,cy=60,svg="";
+    R.L.forEach(function(l){if(l[2]<=0)return;var a1=a0+2*Math.PI*l[2]/tot,large=(a1-a0)>Math.PI?1:0;
+      svg+='<path d="M'+(cx+Rr*Math.cos(a0)).toFixed(2)+','+(cy+Rr*Math.sin(a0)).toFixed(2)+' A'+Rr+','+Rr+' 0 '+large+' 1 '+(cx+Rr*Math.cos(a1)).toFixed(2)+','+(cy+Rr*Math.sin(a1)).toFixed(2)+'" fill="none" stroke="'+l[3]+'" stroke-width="16"/>';a0=a1});
     svg+='<text x="60" y="58" text-anchor="middle" font-size="15">'+P+'</text><text x="60" y="74" text-anchor="middle" font-size="9" style="fill:#9DB0C5;font-family:IBM Plex Mono,monospace;font-weight:500">viajeros</text>';
     $("#donut").innerHTML=svg;
-    var alt={};["hotel","airbnb"].forEach(function(lg){var keep=S.lodge;S.lodge=lg;alt[lg]=lodging()+FOOD[S.tier]*14*(A+.7*K)*(lg==="airbnb"?.88:1);S.lodge=keep});
-    var diff=alt.hotel-alt.airbnb;
-    $("#arsNote").textContent="En pesos, al cambio de referencia US$1 = AR$1,450, el total ronda AR$ "+Math.round(tot*ARS).toLocaleString("en-US")+". Con los mismos viajeros y nivel, Airbnb sale "+money(Math.abs(diff))+(diff>=0?" más barato":" más caro")+" que hotel sumando alojamiento y comida.";
+    $("#arsNote").textContent="En pesos, al cambio de referencia US$1 = AR$1,450, el total ronda AR$ "+Math.round(tot*ARS).toLocaleString("en-US")+". Las tarifas de Arajet, JetSMART y Flybondi son de promociones vistas en octubre de 2026 para noviembre de 2026; para 2027 hay que cazarlas con alertas.";
+    renderPlans();renderLevers();
   }
 
   /* bind controls */
@@ -939,13 +1053,15 @@ footer strong{color:var(--night-ink)}
     $$("[data-l]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.l===S.lodge?"true":"false")});
     $$("[data-t]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.t===S.tier?"true":"false")});
     ["sju","mcoA","mcoK"].forEach(function(k){$("#o_"+k).textContent=S[k]});
+    $$("#opts input").forEach(function(i){i.checked=!!S.opts[i.id];i.parentNode.style.opacity=(S.noMza&&i.id==="op4")?.45:1});
     renderPasses();renderStays();calc();
   }
   $$("[data-hub]").forEach(function(b){b.addEventListener("click",function(){S.hub=b.dataset.hub;sync()})});
   $$("[data-l]").forEach(function(b){b.addEventListener("click",function(){S.lodge=b.dataset.l;sync()})});
   $$("[data-t]").forEach(function(b){b.addEventListener("click",function(){S.tier=b.dataset.t;sync()})});
   $$("[data-k]").forEach(function(b){b.addEventListener("click",function(){var k=b.dataset.k,v=S[k]+Number(b.dataset.d),min=k==="mcoK"?0:(k==="sju"?1:0);S[k]=Math.min(8,Math.max(min,v));if(S.sju+S.mcoA<1)S.mcoA=1;sync()})});
-  $$("#opts input").forEach(function(i){i.addEventListener("change",calc)});
+  $$("#opts input").forEach(function(i){i.addEventListener("change",function(){if(i.checked)S.opts[i.id]=1;else delete S.opts[i.id];sync()})});
+  $$("#planSeg button").forEach(function(b){b.addEventListener("click",function(){if(b.dataset.plan==="custom")return;var n=withPlan(S,b.dataset.plan);for(var k in n)S[k]=n[k];sync()})});
   sync();
 
   /* converter */
